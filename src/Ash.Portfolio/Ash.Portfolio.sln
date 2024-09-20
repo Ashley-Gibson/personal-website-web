@@ -7,8 +7,11 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Ash.Portfolio.Web", "Ash.Po
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Solution Items", "Solution Items", "{89F781BE-A073-43F4-8408-BFE15DE4F0B4}"
 	ProjectSection(SolutionItems) = preProject
+		.dockerignore = .dockerignore
 		..\.editorconfig = ..\.editorconfig
+		..\..\GitVersion.yml = ..\..\GitVersion.yml
 		..\nuget.config = ..\nuget.config
+		..\..\docs\README.md = ..\..\docs\README.md
 	EndProjectSection
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Tests", "Tests", "{63D8D05B-1360-484A-9A58-AA50F9FF732C}"
