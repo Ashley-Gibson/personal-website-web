@@ -4,9 +4,9 @@ Web Project that serves my Portfolio API.
 
 ## Technologies
 
-- .NET 5 Blazor
+- .NET 8 Blazor
 - WebApi
-- Moq (Unit Testing)
+- NSubstitute (Unit Testing)
 
 
 ## API
@@ -15,13 +15,13 @@ API will return JSON Objects from the [API Data Storage](https://github.com/Ashl
 
 #### Controllers
 
-- PortfolioProjects
-- PreviousEmployers
-- EducationInstitutions
+- Projects
+- Experience
+- Education
 - Certifications
 - MyLinks
 
-#### PortfolioProjects Controller
+#### Projects Controller
 
 - Gets a list of all my current Portfolio Projects (public only from GitHub)
 - Each PortfolioProject Item returns:
@@ -30,10 +30,10 @@ API will return JSON Objects from the [API Data Storage](https://github.com/Ashl
     - Project Image/Gif
     - Statistics on contributions etc
 
-#### PreviousEmployers Controller
+#### Experience Controller
 
-- Gets a list of past Work Experience (PreviousEmployers)
-- Each PreviousEmployer returns:
+- Gets a list of past Work Experience
+- Each ExperienceRow returns:
     - Employer Name
     - Start Date
     - End Date
@@ -43,10 +43,10 @@ API will return JSON Objects from the [API Data Storage](https://github.com/Ashl
     - Technologies used/Skills Gained
     - Projects worked on
 
-#### EducationInstitutions Controller
+#### Education Controller
 
 - Gets a list of past Education Institutions
-- Each Education Institution returns:
+- Each EducationRow returns:
     - Institution Name
     - Enrollment Date
     - Graduation Date
@@ -87,15 +87,15 @@ Utilises PortfolioProjects Controller.
 
 List of all Projects in a table. Clicking on a Project shows a popup with info about the Project.
 
-#### Previous Employers Page
+#### Experience Page
 
-Utilises PreviousEmployers Controller.
+Utilises Experience Controller.
 
-List of all previous Employers in a table. Clicking on an Employer shows a popup with info about the Employer and my experience.
+List of all previous Employers in a table. Clicking on an ExperienceRow shows a popup with info about the Employer and my experience.
 
-#### Education Institutions Page
+#### Education Page
 
-Utilises EducationInstitutions Controller.
+Utilises Education Controller.
 
 List of all previous Education Institutions in a table. Clicking on an Institution shows a popup with info about the Institution and my degree.
 
@@ -114,30 +114,30 @@ All endpoints return JSON objects.
 
 Data is stored originally in a set of CSVs. Later this will be integrated into an Azure SQL Database to store properly.
 
-#### PortfolioProjects CSV/Table
+#### Projects CSV/Table
 
-- ProjectName: STRING
+- Name: STRING
 - Description: STRING
-- ProjectImage: STRING
+- Image: STRING
 - ContributionsThisYear: INT
 - ContributionsThisWeek: INT
 - ContributionsThisMonth: INT
 
-#### PreviousEmployers CSV/Table
+#### Experience CSV/Table
 
-- EmployerName: STRING
+- EmployerName: STRING NULL
 - StartDate: DATETIME
 - EndDate: DATETIME
-- EmployerWebsiteLink: STRING
-- EmployerLogo: STRING
+- WebsiteLink: STRING
+- Image: STRING
 - LengthOfServiceMonths: INT
 - TechnologiesUsed: STRING (Semi Colon separated list)
 - SkillsGained: STRING (Semi Colon separated list)
 - Projects: STRING (Semi Colon separated list)
 
-#### EducationInstitutions CSV/Table
+#### Education CSV/Table
 
-- InstitutionName: STRING
+- InstitutionName: STRING NULL
 - DateEnrolled: DATETIME
 - DateGraduated: DATETIME
 - CourseGrades: STRING (Semi Colon separated list, Hyphen separating Course-Grade)
@@ -152,6 +152,6 @@ Data is stored originally in a set of CSVs. Later this will be integrated into a
 
 #### MyLinks CSV/Table
 
-- LinkName: STRING
-- LinkValue: STRING
-- LinkIcon: STRING
+- Name: STRING
+- Value: STRING
+- Image: STRING
