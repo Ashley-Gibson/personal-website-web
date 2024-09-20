@@ -1,0 +1,36 @@
+parameters:
+  - name: deploymentType
+    type: string
+  - name: environmentName
+    type: string
+  - name: stage
+    type: string  
+  - name: subscriptionName
+    type: string
+  - name: subscriptionType
+    type: string
+  - name: regions
+    type: object
+  - name: dockerImageRepository
+    type: string
+  - name: dockerImageTag
+    type: string
+  - name: webAppServicePlan
+    type: object
+  - name: sqlConnectionType
+    type: string
+
+stages:
+    - ${{ each region in parameters.regions }}:      
+      - template: provision-region.yml
+        parameters:
+          deploymentType: ${{ parameters.deploymentType }}
+          environmentName: ${{ parameters.environmentName }}
+          stage: ${{ parameters.stage }}
+          subscriptionName: ${{ parameters.subscriptionName }}
+          subscriptionType: ${{ parameters.subscriptionType }}
+          region: ${{ region }}
+          dockerImageRepository: ${{ parameters.dockerImageRepository }}
+          dockerImageTag: ${{ parameters.dockerImageTag }}
+          webAppServicePlan: ${{ parameters.webAppServicePlan }}
+          sqlConnectionType: $${{ parameters.sqlConnectionType }}

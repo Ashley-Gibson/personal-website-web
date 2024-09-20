@@ -1,0 +1,95 @@
+resources: 
+  repositories: 
+  - repository: AshTemplates 
+    name: Ashley-Gibson/personal-website-templates 
+    type: github
+    ref: main
+
+trigger:
+  branches:
+    include:
+      - main
+  paths:
+    include:
+      - pipeline
+      - infra
+      - src
+    exclude:
+      - README.md
+      - .gitignore
+
+pool:
+  vmImage: "ubuntu-latest"
+
+parameters:
+  - name: deploymentType
+    displayName: Deployment Type
+    type: string
+    values:
+    - All
+    - Code
+    - Provisioning
+    default: All
+
+  - name: pushDockerImage
+    displayName: "Push new docker image?"
+    type: boolean
+    default: true
+
+variables:
+  subscriptionName: AshleyGibsonSubscription
+  dockerImageRepository: ash-portfolio-website-web
+  dockerImageTag: '$(Build.BuildId)-ash-portfolio-website-web'
+  sqlConnectionType: 'ManagedIdentity'
+
+stages:
+  
+  - template: stages/build-and-test.yml
+    parameters:
+      deploymentType: ${{ parameters.deploymentType }}
+
+  - ${{ if in(variables['Build.Reason'], 'IndividualCI', 'BatchedCI', 'Manual') }}:
+    - template: stages/publish-docker-images.yml
+      parameters:
+        pushDockerImage: ${{ parameters.pushDockerImage }}
+        deploymentType: ${{ parameters.deploymentType }}
+        dockerImageRepository: $(dockerImageRepository)
+        dockerImageTag: $(dockerImageTag)
+  
+  - ${{ if in(variables['Build.Reason'], 'IndividualCI', 'BatchedCI', 'Manual') }}:
+    - template: pipeline/stages/deployment-preparation.yml@AshTemplates
+      parameters:
+         runAfter: 
+          - Build_And_Test
+          - Publish_Docker_Image
+
+#######################################################################
+# Provision to Production
+#######################################################################
+  - ${{ if in(variables['Build.Reason'], 'IndividualCI', 'BatchedCI', 'Manual') }}:
+    - template: stages/provision-environment.yml
+      parameters:
+        deploymentType: ${{ parameters.deploymentType }}
+        environmentName: prod
+        stage: Prod
+        subscriptionName: ${{ variables.subscriptionName }}
+        dockerImageRepository: $(dockerImageRepository)
+        dockerImageTag: $(dockerImageTag)
+        webAppServicePlan:
+          sku: F1
+          tier: Free
+        sqlConnectionType: $(sqlConnectionType)
+        regions:
+        - regionName: UK
+          runAfter:
+            - Deployment_Preparation
+          azureRegions:
+            - eun
+            - euw
+          websiteTimeZone: 'GMT Standard Time'
+
+#######################################################################
+# Tag the Build
+#######################################################################
+  - ${{ if in(variables['Build.Reason'], 'IndividualCI', 'BatchedCI', 'Manual') }}:
+    - template: pipeline/stages/tag-build.yml@AshTemplates

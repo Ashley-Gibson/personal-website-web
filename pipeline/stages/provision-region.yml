@@ -1,0 +1,42 @@
+parameters:
+  - name: deploymentType
+    type: string
+  - name: environmentName
+    type: string
+  - name: stage
+    type: string  
+  - name: subscriptionName
+    type: string
+  - name: subscriptionType
+    type: string
+  - name: region
+    type: object
+  - name: dockerImageRepository
+    type: string
+  - name: dockerImageTag
+    type: string
+  - name: webAppServicePlan
+    type: object
+  - name: sqlConnectionType
+    type: string
+
+stages:
+  - stage: ${{ parameters.region.regionName }}_${{ parameters.stage }}
+    dependsOn: ${{ parameters.region.runAfter }}
+    displayName: "Deploy to ${{ parameters.region.regionName }} ${{ parameters.stage }} (${{ variables['Build.SourceBranch'] }}) Stage"
+    jobs:
+      - ${{ each azureRegion in parameters.region.azureRegions }}:      
+        - template: ../jobs/provision-app-services.yml
+          parameters:
+            deploymentType: ${{ parameters.deploymentType }}
+            environmentName: ${{ parameters.environmentName }}
+            stage: ${{ parameters.stage }}
+            subscriptionName: ${{ parameters.subscriptionName }}
+            subscriptionType: ${{ parameters.subscriptionType }}
+            region: ${{ parameters.region }}
+            azureRegion: ${{ azureRegion }}
+            runAfter: []
+            dockerImageRepository: ${{ parameters.dockerImageRepository }}
+            dockerImageTag: ${{ parameters.dockerImageTag }}
+            webAppServicePlan: ${{ parameters.webAppServicePlan }}
+            sqlConnectionType: ${{ parameters.sqlConnectionType }}

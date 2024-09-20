@@ -1,0 +1,23 @@
+parameters:
+  - name: deploymentType
+    displayName: Deployment Type
+    type: string
+  - name: pushDockerImage
+    type: boolean
+    default: true   
+  - name: dockerImageRepository
+    type: string
+  - name: dockerImageTag
+    type: string
+
+stages:
+  - template: pipeline/stages/publish-docker-image.yml@AshTemplates
+    parameters:
+      deploymentType: ${{ parameters.deploymentType }}
+      runAfter:
+        - Build_And_Test
+      dockerImageRepository: ${{ parameters.dockerImageRepository }}
+      dockerImageTag: ${{ parameters.dockerImageTag }}
+      appName : web
+      dockerFile :  WebDockerfile
+      pushToProduction: ${{ parameters.pushDockerImage }}

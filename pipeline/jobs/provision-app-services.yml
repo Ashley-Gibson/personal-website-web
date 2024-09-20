@@ -1,0 +1,91 @@
+parameters:
+  - name: deploymentType
+    type: string
+  - name: environmentName
+    type: string
+  - name: stage
+    type: string  
+  - name: subscriptionName
+    type: string
+  - name: subscriptionType
+    type: string
+  - name: region
+    type: object
+  - name: azureRegion
+    type: string
+  - name: runAfter
+    type: object
+  - name: dockerImageRepository
+    type: string
+  - name: dockerImageTag
+    type: string
+  - name: webAppServicePlan
+    type: object
+  - name: sqlConnectionType
+    type: string
+
+jobs:
+  - deployment: Deploy_AppService_${{ parameters.azureRegion }}
+    displayName: "Deploy to ${{ parameters.azureRegion }} ${{ parameters.region.regionName }} ${{ parameters.stage }} (${{ parameters.environmentName }})"
+    dependsOn: ${{ parameters.runAfter }}
+    environment: Athena ${{ parameters.region.regionName }} ${{ parameters.stage }} (${{ parameters.environmentName }})
+    variables:
+      - template: pipeline/variables/subscriptions/${{ lower(parameters.subscriptionName) }}.yml@AshTemplates
+      - template: pipeline/variables/regions/${{ parameters.region.regionName }}.yml@AshTemplates
+      - template: pipeline/variables/azureregions/${{ parameters.azureRegion }}.yml@AshTemplates
+      - template: pipeline/variables/environments/${{ parameters.environmentName }}.yml@AshTemplates
+      - template: pipeline/variables/common/portfolio.yml@AshTemplates
+      - template: pipeline/resources/azure-container-registry.yml@AshTemplates
+      - template: pipeline/resources/key-vault.yml@AshTemplates
+      - template: pipeline/resources/sql-server.yml@AshTemplates
+      - template: ../variables/featuremanagment/${{ parameters.environmentName }}/feature-settings.yml
+      - name: webAppServiceName
+        value: app-$(resourceNamePostfix)-portfolio-web
+      - name: dockerImage
+        value: $(acrServerName)/${{ parameters.dockerImageRepository }}:${{ parameters.dockerImageTag }}
+      - name: appSettings
+        value: -Database__ServerName "$(failoverSqlServerFullDomainName)"
+               -Database__DatabaseName "$(satabaseName)"
+               -Database__AuthenticationMode "$(sqlConnectionType)"
+               -WEBSITE_TIME_ZONE "${{ parameters.region.websiteTimeZone }}"
+               -BUILD_VERSION "$(Build.BuildNumber)"
+    strategy:
+      runOnce:
+        deploy:
+          steps:
+            - ${{ if in(parameters.deploymentType, 'All', 'Provisioning') }}:
+              - task: ConfigureResourceGroup@1
+                displayName: 'Create Resource Group'
+                inputs:
+                  spn: '${{ variables.azureSubscription }}'
+                  resourceGroup: '$(resourceGroupName)'
+                  location: '$(azureRegionName)'
+                  SystemTag: '$(systemTag)'
+
+              - task: AzureCLI@2
+                displayName: 'Deploy Resources'
+                inputs:
+                  azureSubscription: ${{ variables.azureSubscription }}
+                  scriptType: 'pscore'
+                  scriptLocation: 'inlineScript'
+                  inlineScript: |
+                    az deployment group create `
+                    --resource-group $(resourceGroupName) `
+                    --template-file $(Agent.BuildDirectory)/drop/templates/main.bicep `
+                    --parameters resource_name_post_fix=$(resourceNamePostfix) `
+                                 web_app_service_name=$(appServiceName) `
+                                 web_app_service_plan_sku=${{ parameters.servicePlan.sku }} `
+                                 web_app_service_plan_tier=${{ parameters.servicePlan.tier }} `
+                                 acr_resource_group_name=$(acrResourceGroup) `
+                                 acr_name=$(acrName) `
+                                 key_vault_name=$(keyvaultName) `
+            
+            - ${{ if in(parameters.deploymentType, 'All', 'Code') }}:
+              - task: AzureWebAppContainer@1
+                displayName: 'Deploy Web App'
+                inputs:
+                  azureSubscription: '${{ parameters.subscriptionName }}'
+                  appName: '$(webAppServiceName)'
+                  imageName: '$(dockerImage)'
+                  appSettings: '$(appSettings)'
+                  configurationStrings: '-acrUseManagedIdentityCreds true'

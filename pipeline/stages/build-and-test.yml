@@ -1,0 +1,24 @@
+parameters:
+  - name: deploymentType
+    type: string  
+
+stages:
+  - stage: Build_And_Test
+    displayName: Build and Test Solution
+    condition: and(succeeded(), in('${{ parameters.deploymentType }}', 'All', 'Code'))
+    jobs:
+      - job: Build_And_Test
+        displayName: 'Build and Test Solution'
+        steps:
+          - template: source/Templates/Step/run-git-version.yml@AshTemplates
+            parameters:
+              configFilePath: '$(Build.SourcesDirectory)/GitVersion.yml'
+          
+          - template: source/Templates/Step/run-net-core-restore-build-run-tests.yml@AshTemplates
+            parameters:
+              pathToProjects: '**/*.csproj'
+              pathToUnitTests: '**/*Tests/*.csproj'
+              unitTestArguments: ''
+              buildConfiguration: Release
+              versioningScheme: byEnvVar
+              versionEnvVar: Build.BuildNumber          
