@@ -1,7 +1,7 @@
 param key_vault_name string
 param principal_id string
 
-var key_vault_secrets_user_role_id = '4633458b-17de-408a-b874-0445c86b69e6'
+var key_vault_secrets_user_role_id = ''
 
 resource keyVault 'Microsoft.KeyVault/vaults@2021-11-01-preview' existing = {
   name: key_vault_name
