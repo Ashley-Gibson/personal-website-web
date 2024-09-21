@@ -1,0 +1,18 @@
+﻿@rendermode InteractiveServer
+@using Ash.Portfolio.Web.Components.Pages;
+@inherits PageBase
+
+<div class="footerNav">
+    <div class="footerNav-container">
+        <a class="footerNav-container-home" href="/">Home</a>
+        <a class="footerNav-container-portfolio" href="portfolio">Portfolio</a>
+        <a class="footerNav-container-experience" href="experience">Experience</a>
+        <a class="footerNav-container-education" href="education">Education</a>
+        <a class="footerNav-container-interests" @onclick="NavigateToInterestsPage">Interests</a>
+    </div>
+</div>
+
+<!--CV Download Button -->
+<div class="globalCV">
+    <a class="globalCV-button" href="docs/Ashley Gibson CV.docx" target="_blank">Download my CV</a>
+</div>

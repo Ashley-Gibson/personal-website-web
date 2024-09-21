@@ -1,16 +1,9 @@
 ﻿@page "/portfolio"
-@inherits PageBase
 
 <PageTitle>Ashley Gibson - Portfolio</PageTitle>
 
 <div class="portfolioBody">
-    <!-- Show/Hide Page -->
     <div class="page">
-
-        <!--CV Download Button -->
-        <div class="globalCV">
-            <a class="globalCV-button" href="docs/Ashley Gibson CV.docx" target="_blank">Download my CV</a>
-        </div>
 
         <!-- Mobile Navigation -->
         <div class="mobileNav" style="display:none;">
@@ -129,16 +122,8 @@
                     <img class="gamesPortfolio-item-image" src="img/portfolio/shadows.png">
                 </a>
             </div>
-
-            <div class="footerNav">
-                <div class="footerNav-container">
-                    <a class="footerNav-container-home" href="/">Home</a>
-                    <a class="footerNav-container-portfolio" href="portfolio">Portfolio</a>
-                    <a class="footerNav-container-experience" href="experience">Experience</a>
-                    <a class="footerNav-container-education" href="education">Education</a>
-                    <a class="homeNav-container-photgraphy" @onclick="NavigateToInterestsPage">Interests</a>
-                </div>
-            </div>
         </div>
     </div>
 </div>
+
+<Ash.Portfolio.Web.Components.Shared.FooterNav />

@@ -5,9 +5,9 @@ namespace Ash.Portfolio.Web.Components.Pages;
 public class PageBase : ComponentBase
 {
     [Inject]
-    protected NavigationManager? NavigationManager { get; set; }
+    public NavigationManager? NavigationManager { get; set; }
 
-    protected void NavigateToInterestsPage()
+    public void NavigateToInterestsPage()
     {
         NavigationManager?.NavigateTo("/interests", true);
     }
