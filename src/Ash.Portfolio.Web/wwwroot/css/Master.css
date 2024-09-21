@@ -1,14 +1,15 @@
-﻿@import url(global.css);
+﻿@import url(fonts/Brandon-Grotesque.css);
+@import url(fonts/Open_Sans.css);
+@import url(fonts/Poiret_One.css);
+@import url(fonts/Quicksand.css);
+
+@import url(global.css);
 @import url(home.css);
 @import url(experience.css);
 @import url(portfolio.css);
 @import url(education.css);
 @import url(photography.css);
 @import url(custom-buttons/CreditsButton.css);
-@import url(fonts/Brandon-Grotesque.css);
-@import url(fonts/Open_Sans.css);
-@import url(fonts/Poiret_One.css);
-@import url(fonts/Quicksand.css);
 @import url(navigation/FooterNav.css);
 @import url(navigation/HomeNav.css);
 @import url(navigation/MobileNav.css);
