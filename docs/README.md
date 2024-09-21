@@ -18,7 +18,7 @@ API will return JSON Objects from the [API Data Storage](https://github.com/Ashl
 - Projects
 - Experience
 - Education
-- Certifications
+- Interests
 - MyLinks
 
 #### Projects Controller
@@ -53,14 +53,14 @@ API will return JSON Objects from the [API Data Storage](https://github.com/Ashl
     - List of courses/grades
     - Extra-curricular activities
 
-#### Certifications Controller
+#### Interests Controller
 
-- Gets a list of past Certifications
-- Each Certfication returns:
-    - Certification Name
-    - Date Completed
-    - Expiry Date
-    - Skills
+- Gets a list Interests
+- Each InterestRow returns:
+    - Interest Name
+    - Start Date
+    - End Date
+    - Description
 
 #### MyLinks Controller
 
@@ -69,7 +69,6 @@ API will return JSON Objects from the [API Data Storage](https://github.com/Ashl
     - Link Name
     - Link Value
     - Link Icon
-
 
 ## Web
 
@@ -99,13 +98,11 @@ Utilises Education Controller.
 
 List of all previous Education Institutions in a table. Clicking on an Institution shows a popup with info about the Institution and my degree.
 
-#### Certifications Page
+#### Interests Page
 
-Utilises Certifications Controller.
+Utilises Interests Controller.
 
-List of all Certifications gained in a table. Clicking on a Certification shows a popup with info about the Certification and knowledge learnt.
-
-Could link this to the Previous Employers functionality if certifications were gained from an employer instead of my own free time?
+Page of all Interests. Clicking on an Interest shows a popup with info about the Interest.
 
 
 ## API Data Storage
@@ -143,12 +140,12 @@ Data is stored originally in a set of CSVs. Later this will be integrated into a
 - CourseGrades: STRING (Semi Colon separated list, Hyphen separating Course-Grade)
 - ExtraCurricularActivities: STRING (Semi Colon separated list)
 
-#### Certifications CSV/Table
+#### Intersts CSV/Table
 
-- CertificationName: STRING
-- DateCompleted: DATETIME
-- ExpiryDate: DATETIME
-- Skills: STRING (Semi Colon separated list)
+- Name: STRING
+- DateStarted: DATETIME
+- DateFinished: DATETIME NULL
+- Description: STRING
 
 #### MyLinks CSV/Table
 
