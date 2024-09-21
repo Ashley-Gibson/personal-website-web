@@ -1,4 +1,6 @@
 ﻿using Ash.Portfolio.Web.Components;
+using Ash.Portfolio.Web.ServiceCollectionExtensions;
+using Microsoft.AspNetCore.Mvc.Razor;
 
 namespace Ash.Portfolio.Web;
 
@@ -11,6 +13,12 @@ public class Program
         // Add services to the container.
         builder.Services.AddRazorComponents()
             .AddInteractiveServerComponents();
+
+        builder.Services.AddLocalisation(builder.Configuration);
+
+        builder.Services.AddMvc()
+            .AddViewLocalization(LanguageViewLocationExpanderFormat.Suffix)
+            .AddDataAnnotationsLocalization();
 
         var app = builder.Build();
 
@@ -25,6 +33,7 @@ public class Program
 
         app.UseStaticFiles();
         app.UseAntiforgery();
+        app.UseRequestLocalization();
 
         app.MapRazorComponents<App>()
             .AddInteractiveServerRenderMode();

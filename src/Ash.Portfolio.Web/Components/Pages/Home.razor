@@ -6,19 +6,16 @@
 
 <div class="homePage homeBody">
 
-    <!-- Mobile Close Menu Icon -->
-    <div class="close" onclick="hideMobileNav()"></div>
-
     <a class="creditsAnchor" href="credits" target="_blank">
         <div class="creditsAnchor-button">
-            <p class="creditsAnchor-button-text">Credits</p>
+            <p class="creditsAnchor-button-text">@LocalisationService.GetString("Credits")</p>
         </div>
     </a>
 
     <div class="objectContainer">
-        <div class="objectContainer-line1">Hey, I'm</div>
-        <div class="objectContainer-line2">Ashley Gibson</div>
-        <div class="objectContainer-line3">Senior Software Engineer - <a href="https://www.asos.com/" target="_blank">ASOS</a></div>
+        <div class="objectContainer-line1">@LocalisationService.GetString("Hey I'm")</div>
+        <div class="objectContainer-line2">@LocalisationService.GetString("Ashley Gibson")</div>
+        <div class="objectContainer-line3">@LocalisationService.GetString("Senior Software Engineer") - <a href="https://www.asos.com/" target="_blank">@LocalisationService.GetString("ASOS")</a></div>
 
         <div class="objectContainer-socialRow">
             <a href="http://www.facebook.com/ashdgibson" target="_blank"><img src="img/social/facebookNew.png" alt="Facebook"></a>
@@ -34,16 +31,16 @@
 
         <div class="homeNav">
             <div class="homeNav-container">
-                <a class="homeNav-container-home" href="/">Home</a>
-                <a class="homeNav-container-portfolio" href="portfolio">Portfolio</a>
-                <a class="homeNav-container-workExperience" href="experience">Experience</a>
-                <a class="homeNav-container-education" href="education">Education</a>
-                <a class="homeNav-container-interests" @onclick="NavigateToInterestsPage">Interests</a>
+                <a class="homeNav-container-home" href="/">@LocalisationService.GetString("Home")</a>
+                <a class="homeNav-container-portfolio" href="portfolio">@LocalisationService.GetString("Portfolio")</a>
+                <a class="homeNav-container-workExperience" href="experience">@LocalisationService.GetString("Experience")</a>
+                <a class="homeNav-container-education" href="education">@LocalisationService.GetString("Education")</a>
+                <a class="homeNav-container-interests" @onclick="NavigateToInterestsPage">@LocalisationService.GetString("Interests")</a>
             </div>
         </div>
 
         <div class="homeCV">
-            <a class="homeCV-button" href="docs/Ashley Gibson CV.docx" target="_blank">Download my CV</a>
+            <a class="homeCV-button" href="docs/Ashley Gibson CV.docx" target="_blank">@LocalisationService.GetString("Download My CV")</a>
         </div>
     </div>
 </div>

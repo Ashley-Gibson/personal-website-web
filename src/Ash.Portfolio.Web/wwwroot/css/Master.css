@@ -10,6 +10,5 @@
 @import url(education.css);
 @import url(photography.css);
 @import url(custom-buttons/CreditsButton.css);
-@import url(navigation/FooterNav.css);
+@import url(navigation/NavBar.css);
 @import url(navigation/HomeNav.css);
-@import url(navigation/MobileNav.css);
