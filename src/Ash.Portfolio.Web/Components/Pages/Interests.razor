@@ -1,64 +1,73 @@
 ﻿@page "/interests"
-@attribute [StreamRendering]
 
-<PageTitle>Interests</PageTitle>
+<PageTitle>Ashley Gibson - Interests</PageTitle>
 
-<h1>Interests</h1>
+<div class="photographyBody">
+    <!-- Show/Hide Page -->
+    <div class="page">
 
-<p>This component demonstrates showing data.</p>
+        <!-- Mobile Navigation -->
+        <div class="mobileNav" style="display:none;">
+            <ul class="mobileNav-container">
+                <li><a class="mobileNav-container-home" href="/">Home</a></li>
+                <li><a class="mobileNav-container-portfolio" href="portfolio">Portfolio</a></li>
+                <li><a class="mobileNav-container-workExperience" href="experience">Experience</a></li>
+                <li><a class="mobileNav-container-education" href="education">Education</a></li>
+                <li><a class="mobileNav-container-photgraphy" href="interests">Interests</a></li>
+            </ul>
+        </div>
 
-@if (forecasts == null)
-{
-    <p><em>Loading...</em></p>
-}
-else
-{
-    <table class="table">
-        <thead>
-            <tr>
-                <th>Date</th>
-                <th>Temp. (C)</th>
-                <th>Temp. (F)</th>
-                <th>Summary</th>
-            </tr>
-        </thead>
-        <tbody>
-            @foreach (var forecast in forecasts)
-            {
-                <tr>
-                    <td>@forecast.Date.ToShortDateString()</td>
-                    <td>@forecast.TemperatureC</td>
-                    <td>@forecast.TemperatureF</td>
-                    <td>@forecast.Summary</td>
-                </tr>
-            }
-        </tbody>
-    </table>
-}
+        <!-- Mobile Burger Menu Icon -->
+        <div class="mobileBurgerMenu">
+            <img src="img/navigation/burger.png" width="30" height="30" onclick="showMobileNav()" />
+        </div>
 
-@code {
-    private WeatherForecast[]? forecasts;
+        <!-- Mobile Close Menu Icon -->
+        <div class="close" onclick="hideMobileNav()"></div>
 
-    protected override async Task OnInitializedAsync()
-    {
-        // Simulate asynchronous loading to demonstrate streaming rendering
-        await Task.Delay(500);
+        <!--CV Download Button -->
+        <div class="globalCV">
+            <a class="globalCV-button" href="docs/Ashley Gibson CV.docx" target="_blank">Download my CV</a>
+        </div>
 
-        var startDate = DateOnly.FromDateTime(DateTime.Now);
-        var summaries = new[] { "Freezing", "Bracing", "Chilly", "Cool", "Mild", "Warm", "Balmy", "Hot", "Sweltering", "Scorching" };
-        forecasts = Enumerable.Range(1, 5).Select(index => new WeatherForecast
-        {
-            Date = startDate.AddDays(index),
-            TemperatureC = Random.Shared.Next(-20, 55),
-            Summary = summaries[Random.Shared.Next(summaries.Length)]
-        }).ToArray();
-    }
+        <div class="mainLayer">
+            <div class="mainLayer-header">
+                <div class="mainLayer-header-text">My experiences in pictures...</div>
+            </div>
 
-    private class WeatherForecast
-    {
-        public DateOnly Date { get; set; }
-        public int TemperatureC { get; set; }
-        public string? Summary { get; set; }
-        public int TemperatureF => 32 + (int)(TemperatureC / 0.5556);
-    }
-}
+            <div class="photographyTable">
+                <div class="leftArrow" onclick="photographyTable_leftArrow()"></div>
+
+                <a class="imgShow imgFadeIn" href="https://www.instagram.com/gibbo_code" target="_blank">
+                    <div class="imgContainer"><img /></div>
+                    <div class="imgContainer"><img /></div>
+                    <div class="imgContainer"><img /></div>
+                    <div class="imgContainer"><img /></div>
+                    <div class="imgContainer"><img /></div>
+                    <div class="imgContainer"><img /></div>
+                    <div class="imgContainer"><img /></div>
+                    <div class="imgContainer"><img /></div>
+                    <div class="imgContainer"><img /></div>
+                    <div class="imgContainer"><img /></div>
+                    <div class="imgContainer"><img /></div>
+                    <div class="imgContainer"><img /></div>
+                    <div class="imgContainer"><img /></div>
+                    <div class="imgContainer"><img /></div>
+                    <div class="imgContainer"><img /></div>
+                </a>
+
+                <div class="rightArrow" onclick="photographyTable_rightArrow()"></div>
+            </div>
+
+            <div class="footerNav">
+                <div class="footerNav-container">
+                    <a class="footerNav-container-home" href="/">Home</a>
+                    <a class="footerNav-container-portfolio" href="portfolio">Portfolio</a>
+                    <a class="footerNav-container-experience" href="experience">Experience</a>
+                    <a class="footerNav-container-education" href="education">Education</a>
+                    <a class="footerNav-container-photgraphy" href="interests">Interests</a>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

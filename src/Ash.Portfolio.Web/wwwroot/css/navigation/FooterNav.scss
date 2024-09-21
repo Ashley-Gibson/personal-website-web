@@ -1,0 +1,36 @@
+﻿.footerNav {
+    position: fixed;
+    right: 0;
+    left: 0;
+    margin: auto auto 10% auto;
+    top: 90%;
+    width:35%;
+
+    &-container {
+        padding: 1%;
+        overflow: hidden;
+        border: 1px solid rgba(0, 0, 0, 0);
+        border-radius: 20px;
+        background-color: rgba(146, 145, 145, 0.4);
+        justify-content: center;
+        align-items: center;
+        margin: 0;
+        display: flex;
+        text-align: center;
+        width:100%;
+
+        a {
+            float: left;
+            color: white;
+            font-weight: bold;
+            text-decoration: none;
+            width:auto;
+            text-align:center;
+            margin:auto;
+
+            &:hover {
+                color: #4eb5f1;
+            }
+        }
+    }
+}

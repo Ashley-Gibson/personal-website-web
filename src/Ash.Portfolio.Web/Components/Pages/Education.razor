@@ -1,64 +1,105 @@
 ﻿@page "/education"
-@attribute [StreamRendering]
 
-<PageTitle>Education</PageTitle>
+<PageTitle>Ashley Gibson - Education</PageTitle>
 
-<h1>Education</h1>
+<div class="educationBody">
+    <!-- Show/Hide Page -->
+    <div class="page">
 
-<p>This component demonstrates showing data.</p>
+        <!-- Mobile Navigation -->
+        <div class="mobileNav" style="display:none;">
+            <ul class="mobileNav-container">
+                <li><a class="mobileNav-container-home" href="/">Home</a></li>
+                <li><a class="mobileNav-container-portfolio" href="portfolio">Portfolio</a></li>
+                <li><a class="mobileNav-container-workExperience" href="experience">Experience</a></li>
+                <li><a class="mobileNav-container-education" href="education">Education</a></li>
+                <li><a class="mobileNav-container-photgraphy" href="interests">Interests</a></li>
+            </ul>
+        </div>
 
-@if (forecasts == null)
-{
-    <p><em>Loading...</em></p>
-}
-else
-{
-    <table class="table">
-        <thead>
-            <tr>
-                <th>Date</th>
-                <th>Temp. (C)</th>
-                <th>Temp. (F)</th>
-                <th>Summary</th>
-            </tr>
-        </thead>
-        <tbody>
-            @foreach (var forecast in forecasts)
-            {
-                <tr>
-                    <td>@forecast.Date.ToShortDateString()</td>
-                    <td>@forecast.TemperatureC</td>
-                    <td>@forecast.TemperatureF</td>
-                    <td>@forecast.Summary</td>
-                </tr>
-            }
-        </tbody>
-    </table>
-}
+        <!-- Mobile Burger Menu Icon -->
+        <div class="mobileBurgerMenu">
+            <img src="img/navigation/burger.png" width="30" height="30" onclick="showMobileNav()" />
+        </div>
 
-@code {
-    private WeatherForecast[]? forecasts;
+        <!-- Mobile Close Menu Icon -->
+        <div class="close" onclick="hideMobileNav()"></div>
 
-    protected override async Task OnInitializedAsync()
-    {
-        // Simulate asynchronous loading to demonstrate streaming rendering
-        await Task.Delay(500);
+        <!--CV Download Button -->
+        <div class="globalCV">
+            <a class="globalCV-button" href="docs/Ashley Gibson CV.docx" target="_blank">Download my CV</a>
+        </div>
 
-        var startDate = DateOnly.FromDateTime(DateTime.Now);
-        var summaries = new[] { "Freezing", "Bracing", "Chilly", "Cool", "Mild", "Warm", "Balmy", "Hot", "Sweltering", "Scorching" };
-        forecasts = Enumerable.Range(1, 5).Select(index => new WeatherForecast
-        {
-            Date = startDate.AddDays(index),
-            TemperatureC = Random.Shared.Next(-20, 55),
-            Summary = summaries[Random.Shared.Next(summaries.Length)]
-        }).ToArray();
-    }
+        <div class="mainLayer">
+            <div class="mainLayer-header">
+                <div class="mainLayer-header-text">Here's what I've learnt...</div>
+            </div>
 
-    private class WeatherForecast
-    {
-        public DateOnly Date { get; set; }
-        public int TemperatureC { get; set; }
-        public string? Summary { get; set; }
-        public int TemperatureF => 32 + (int)(TemperatureC / 0.5556);
-    }
-}
+            <div class="educationTable">
+
+                <div class="educationTable-item">
+                    <div class="educationTable-item-image">
+                        <a class="educationTable-item-image-anchor" href="https://www.pluralsight.com/" target="_blank">
+                            <img src="img/education/pluralsight.png">
+                        </a>
+                    </div>
+                    <div class="educationTable-item-text">
+                        <h1><a href="https://www.shu.ac.uk/" target="_blank">PluralSight</a></h1>
+                        <h2>Coding Courses</h2>
+                        <ul>
+                            <li>Topics studied: C#, .NET, Security, Docker, Kubernetes, Jenkins and Sitecore</li>
+                            <li>Courses completed: 15</li>
+                            <li>Hours watched: 43.55</li>
+                            <li>My PluralSight link: <a href="https://app.pluralsight.com/profile/ashley-gibson" target="_blank">PluralSight</a></li>
+                        </ul>
+                    </div>
+                </div>
+
+                <div class="educationTable-item">
+                    <div class="educationTable-item-image">
+                        <a class="educationTable-item-image-anchor" href="https://www.shu.ac.uk/" target="_blank">
+                            <img src="img/education/SHU.png">
+                        </a>
+                    </div>
+                    <div class="educationTable-item-text">
+                        <h1><a href="https://www.shu.ac.uk/" target="_blank">Sheffield Hallam University</a></h1>
+                        <h2>BSc (Hons) Computer Science for Games</h2>
+                        <ul>
+                            <li>Programming languages: C++, C#, C for Robotics, VB, JavaScript, HTML, CSS, PHP, SQL, Python and Assembly</li>
+                            <li>Software used: Visual Studio, Unity</li>
+                            <li>Source Control: Bitbucket with Source Tree</li>
+                            <li>Take a look at the Games area of my <a href="/portfolio.html">Portfolio</a> or view my <a href="https://github.com/Ashley-Gibson" target="_blank">GitHub</a></li>
+                        </ul>
+                    </div>
+                </div>
+
+                <div class="educationTable-item">
+                    <div class="educationTable-item-image">
+                        <a class="educationTable-item-image-anchor" href="https://www.netherthorpe.academy/" target="_blank">
+                            <img src="img/education/netherthorpe.png">
+                        </a>
+                    </div>
+                    <div class="educationTable-item-text">
+                        <h1><a href="https://www.netherthorpe.academy/" target="_blank">Netherthorpe School</a></h1>
+                        <h2>Secondary School & Sixth Form</h2>
+                        <ul>
+                            <li>4 A Levels</li>
+                            <li>1 AS Level</li>
+                            <li>8 GCSEs</li>
+                            <li>Senior Prefect, Form Representative and Sports Leader</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+            <div class="footerNav">
+                <div class="footerNav-container">
+                    <a class="footerNav-container-home" href="/">Home</a>
+                    <a class="footerNav-container-portfolio" href="portfolio">Portfolio</a>
+                    <a class="footerNav-container-experience" href="experience">Experience</a>
+                    <a class="footerNav-container-education" href="education">Education</a>
+                    <a class="footerNav-container-photgraphy" href="interests">Interests</a>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

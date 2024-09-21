@@ -1,64 +1,143 @@
 ﻿@page "/portfolio"
-@attribute [StreamRendering]
 
-<PageTitle>Portfolio</PageTitle>
+<PageTitle>Ashley Gibson - Portfolio</PageTitle>
 
-<h1>Portfolio</h1>
+<div class="portfolioBody">
+    <!-- Show/Hide Page -->
+    <div class="page">
 
-<p>This component demonstrates showing data.</p>
+        <!--CV Download Button -->
+        <div class="globalCV">
+            <a class="globalCV-button" href="docs/Ashley Gibson CV.docx" target="_blank">Download my CV</a>
+        </div>
 
-@if (forecasts == null)
-{
-    <p><em>Loading...</em></p>
-}
-else
-{
-    <table class="table">
-        <thead>
-            <tr>
-                <th>Date</th>
-                <th>Temp. (C)</th>
-                <th>Temp. (F)</th>
-                <th>Summary</th>
-            </tr>
-        </thead>
-        <tbody>
-            @foreach (var forecast in forecasts)
-            {
-                <tr>
-                    <td>@forecast.Date.ToShortDateString()</td>
-                    <td>@forecast.TemperatureC</td>
-                    <td>@forecast.TemperatureF</td>
-                    <td>@forecast.Summary</td>
-                </tr>
-            }
-        </tbody>
-    </table>
-}
+        <!-- Mobile Navigation -->
+        <div class="mobileNav" style="display:none;">
+            <ul class="mobileNav-container">
+                <li><a class="mobileNav-container-home" href="/">Home</a></li>
+                <li><a class="mobileNav-container-portfolio" href="portfolio">Portfolio</a></li>
+                <li><a class="mobileNav-container-workExperience" href="experience">Experience</a></li>
+                <li><a class="mobileNav-container-education" href="education">Education</a></li>
+                <li><a class="mobileNav-container-photgraphy" href="interests">Interests</a></li>
+            </ul>
+        </div>
 
-@code {
-    private WeatherForecast[]? forecasts;
+        <!-- Mobile Burger Menu Icon -->
+        <div class="mobileBurgerMenu">
+            <img src="images/navigation/burger.png" width="30" height="30" onclick="showMobileNav()" />
+        </div>
 
-    protected override async Task OnInitializedAsync()
-    {
-        // Simulate asynchronous loading to demonstrate streaming rendering
-        await Task.Delay(500);
+        <!-- Mobile Close Menu Icon -->
+        <div class="close" onclick="hideMobileNav()"></div>
 
-        var startDate = DateOnly.FromDateTime(DateTime.Now);
-        var summaries = new[] { "Freezing", "Bracing", "Chilly", "Cool", "Mild", "Warm", "Balmy", "Hot", "Sweltering", "Scorching" };
-        forecasts = Enumerable.Range(1, 5).Select(index => new WeatherForecast
-        {
-            Date = startDate.AddDays(index),
-            TemperatureC = Random.Shared.Next(-20, 55),
-            Summary = summaries[Random.Shared.Next(summaries.Length)]
-        }).ToArray();
-    }
+        <div class="mainLayer">
+            <div class="mainLayer-header">
+                <div class="mainLayer-header-text">My projects so far...</div>
+            </div>
+            <h2>
+                Please visit my <a href="https://github.com/Ashley-Gibson" target="_blank">GitHub</a> or click the project links below
+            </h2>
 
-    private class WeatherForecast
-    {
-        public DateOnly Date { get; set; }
-        public int TemperatureC { get; set; }
-        public string? Summary { get; set; }
-        public int TemperatureF => 32 + (int)(TemperatureC / 0.5556);
-    }
-}
+            <!-- Work/University Projects -->
+            <div class="portfolioSelector">
+                <a class="portfolioSelector-completeButton" onclick="showCompletePortfolio()">Complete</a>
+                &nbsp;|&nbsp;
+                <a class="portfolioSelector-inProgressButton" onclick="showInProgressPortfolio()">In Progress</a>
+                &nbsp;|&nbsp;
+                <a class="portfolioSelector-gamesButton" onclick="showGamesPortfolio()">Games</a>
+            </div>
+
+            <!-- COMPLETE PROJECTS -->
+
+            <div class="completePortfolio">
+                <a class="completePortfolio-item" href="https://github.com/Ashley-Gibson/Number-Manipulator" target="_blank">
+                    <p>Number Manipulator - C# .NET</p>
+                    <img class="completePortfolio-item-image" src="img/portfolio/numberManipulator.png">
+                </a>
+
+                <a class="completePortfolio-item" href="https://github.com/Ashley-Gibson/Abstract-Factory" target="_blank">
+                    <p>Abstract Factory - C# .NET</p>
+                    <img class="completePortfolio-item-image" src="img/portfolio/abstractFactory.png">
+                </a>
+
+                <a class="completePortfolio-item" href="https://github.com/Ashley-Gibson/SOLID" target="_blank">
+                    <p>SOLID Principles - C# .NET</p>
+                    <img class="completePortfolio-item-image" src="img/portfolio/solid.png">
+                </a>
+            </div>
+
+            <!-- IN PROGRESS PROJECTS -->
+
+            <div class="inProgressPortfolio" style="display:none;">
+                <a class="inProgressPortfolio-item" href="https://github.com/Ashley-Gibson/Web-Quiz" target="_blank">
+                    <p>Web Quiz - C# .NET Core</p>
+                    <img class="inProgressPortfolio-item-image" src="img/portfolio/webQuiz.png">
+                </a>
+
+                <a class="inProgressPortfolio-item" href="https://github.com/Ashley-Gibson/Chain-Of-Responsibility" target="_blank">
+                    <p>Chain of Responsibility - C# .NET</p>
+                    <img class="inProgressPortfolio-item-image" src="img/portfolio/chainOfResponsibility.png">
+                </a>
+
+                <a class="inProgressPortfolio-item" href="https://github.com/Ashley-Gibson/Path-Finder" target="_blank">
+                    <p>Path Finder - C# .NET</p>
+                    <img class="inProgressPortfolio-item-image" src="img/portfolio/pathFinding.png">
+                </a>
+
+                <a class="inProgressPortfolio-item" href="https://github.com/Ashley-Gibson/Stable-Matching" target="_blank">
+                    <p>Stable Matching - C# .NET</p>
+                    <img class="inProgressPortfolio-item-image" src="img/portfolio/stableMatching.png">
+                </a>
+
+                <a class="inProgressPortfolio-item" href="https://github.com/Ashley-Gibson/Searching-Algorithms" target="_blank">
+                    <p>Searching Algorithms - C# .NET</p>
+                    <img class="inProgressPortfolio-item-image" src="img/portfolio/googleSearch.png">
+                </a>
+
+                <a class="inProgressPortfolio-item" href="https://github.com/Ashley-Gibson/Stock-Market-Dashboard" target="_blank">
+                    <p>Stock Market Dashboard - JS Framework - SPA</p>
+                    <img class="inProgressPortfolio-item-image" src="img/portfolio/stocks.png">
+                </a>
+            </div>
+
+            <!-- GAMES PROJECTS -->
+
+            <div class="gamesPortfolio" style="display:none;">
+                <a class="gamesPortfolio-item" href="#">
+                    <p>Spot and the Zombies - C++</p>
+                    <img class="gamesPortfolio-item-image" src="img/portfolio/spotAndTheZombies.png">
+                </a>
+
+                <a class="gamesPortfolio-item" href="https://github.com/Ashley-Gibson/Tic-Tac-Toe" target="_blank">
+                    <p>Tic Tac Toe - C++</p>
+                    <img class="gamesPortfolio-item-image" src="img/portfolio/tictactoe.png">
+                </a>
+
+                <a class="gamesPortfolio-item" href="#">
+                    <p>Warriors Walk - C# Unity (Mobile Game with .apk)</p>
+                    <img class="gamesPortfolio-item-image" src="img/portfolio/warriorsWalk.png">
+                </a>
+
+                <a class="gamesPortfolio-item" href="#">
+                    <p>Jump! - C# Unity</p>
+                    <img class="gamesPortfolio-item-image" src="img/portfolio/jump.png">
+                </a>
+
+                <a class="gamesPortfolio-item" href="https://github.com/Ashley-Gibson/Shadows" target="_blank">
+                    <p>Shadows - C++ DirectX 11</p>
+                    <img class="gamesPortfolio-item-image" src="img/portfolio/shadows.png">
+                </a>
+            </div>
+
+            <div class="footerNav">
+                <div class="footerNav-container">
+                    <a class="footerNav-container-home" href="/">Home</a>
+                    <a class="footerNav-container-portfolio" href="portfolio">Portfolio</a>
+                    <a class="footerNav-container-experience" href="experience">Experience</a>
+                    <a class="footerNav-container-education" href="education">Education</a>
+                    <a class="footerNav-container-photgraphy" href="interests">Interests</a>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
