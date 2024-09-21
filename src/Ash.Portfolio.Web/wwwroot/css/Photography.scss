@@ -109,9 +109,8 @@
 
 			.imgContainer {
 				width: 20%;
-				height: 33.33333%;
 				object-fit: cover;
-				overflow: hidden;
+				overflow: hidden !important;
 			}
 		}
 	}
