@@ -1,4 +1,5 @@
 ﻿@page "/experience"
+@inherits PageBase
 
 <PageTitle>Ashley Gibson - Experience</PageTitle>
 
@@ -136,7 +137,7 @@
                     <a class="footerNav-container-portfolio" href="portfolio">Portfolio</a>
                     <a class="footerNav-container-experience" href="experience">Experience</a>
                     <a class="footerNav-container-education" href="education">Education</a>
-                    <a class="footerNav-container-photgraphy" href="interests">Interests</a>
+                    <a class="homeNav-container-photgraphy" @onclick="NavigateToInterestsPage">Interests</a>
                 </div>
             </div>
         </div>

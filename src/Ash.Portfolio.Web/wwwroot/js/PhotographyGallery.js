@@ -17,8 +17,8 @@ $(document).ready(function () {
         isMobile = true;
     }
 
-    if (window.location.pathname.indexOf('interests') != -1) {
-        imageList = $('.photographyTable a').find("img");
+    if (window.location.pathname.indexOf('interests') != -1)
+    {
         allImages[0] = "img/camera/lightCinema.png";
         allImages[1] = "img/camera/owenBuilding.png";
         allImages[2] = "img/camera/crookedSpire.png";
@@ -72,8 +72,10 @@ $(document).ready(function () {
             }
         }
 
+        imageList = $('.photographyTable a').find("img");
+
         for (var i = 0; i < 15; i++) {
-            imageList[i].src = allImages[randomNumbers[i]];
+            $(imageList[i]).prop("src", allImages[randomNumbers[i]] + '?' + Math.random());
         }
     }
 });

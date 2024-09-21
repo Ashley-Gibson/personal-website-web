@@ -1,4 +1,5 @@
 ﻿@page "/interests"
+@inherits PageBase
 
 <PageTitle>Ashley Gibson - Interests</PageTitle>
 
@@ -39,21 +40,21 @@
                 <div class="leftArrow" onclick="photographyTable_leftArrow()"></div>
 
                 <a class="imgShow imgFadeIn" href="https://www.instagram.com/gibbo_code" target="_blank">
-                    <div class="imgContainer"><img object-fit="cover" /></div>
-                    <div class="imgContainer"><img object-fit="cover" /></div>
-                    <div class="imgContainer"><img object-fit="cover"/></div>
-                    <div class="imgContainer"><img object-fit="cover"/></div>
-                    <div class="imgContainer"><img object-fit="cover"/></div>
-                    <div class="imgContainer"><img object-fit="cover"/></div>
-                    <div class="imgContainer"><img object-fit="cover"/></div>
-                    <div class="imgContainer"><img object-fit="cover"/></div>
-                    <div class="imgContainer"><img object-fit="cover"/></div>
-                    <div class="imgContainer"><img object-fit="cover"/></div>
-                    <div class="imgContainer"><img object-fit="cover"/></div>
-                    <div class="imgContainer"><img object-fit="cover"/></div>
-                    <div class="imgContainer"><img object-fit="cover"/></div>
-                    <div class="imgContainer"><img object-fit="cover"/></div>
-                    <div class="imgContainer"><img object-fit="cover"/></div>
+                    <div class="imgContainer"><img src="" object-fit="cover" /></div>
+                    <div class="imgContainer"><img src="" object-fit="cover" /></div>
+                    <div class="imgContainer"><img src="" object-fit="cover"/></div>
+                    <div class="imgContainer"><img src="" object-fit="cover"/></div>
+                    <div class="imgContainer"><img src="" object-fit="cover"/></div>
+                    <div class="imgContainer"><img src="" object-fit="cover"/></div>
+                    <div class="imgContainer"><img src="" object-fit="cover"/></div>
+                    <div class="imgContainer"><img src="" object-fit="cover"/></div>
+                    <div class="imgContainer"><img src="" object-fit="cover"/></div>
+                    <div class="imgContainer"><img src="" object-fit="cover"/></div>
+                    <div class="imgContainer"><img src="" object-fit="cover"/></div>
+                    <div class="imgContainer"><img src="" object-fit="cover"/></div>
+                    <div class="imgContainer"><img src="" object-fit="cover"/></div>
+                    <div class="imgContainer"><img src="" object-fit="cover"/></div>
+                    <div class="imgContainer"><img src="" object-fit="cover"/></div>
                 </a>
 
                 <div class="rightArrow" onclick="photographyTable_rightArrow()"></div>
@@ -65,7 +66,7 @@
                     <a class="footerNav-container-portfolio" href="portfolio">Portfolio</a>
                     <a class="footerNav-container-experience" href="experience">Experience</a>
                     <a class="footerNav-container-education" href="education">Education</a>
-                    <a class="footerNav-container-photgraphy" href="interests">Interests</a>
+                    <a class="homeNav-container-photgraphy" @onclick="NavigateToInterestsPage">Interests</a>
                 </div>
             </div>
         </div>
