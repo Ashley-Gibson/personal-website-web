@@ -5,42 +5,16 @@
 <PageTitle>@LocalisationService.GetString("Ashley Gibson")</PageTitle>
 
 <div class="homePage homeBody">
-
-    <a class="creditsAnchor" href="credits" target="_blank">
-        <div class="creditsAnchor-button">
-            <p class="creditsAnchor-button-text">@LocalisationService.GetString("Credits")</p>
-        </div>
-    </a>
-
-    <div class="objectContainer">
-        <div class="objectContainer-line1">@LocalisationService.GetString("Hey I'm")</div>
-        <div class="objectContainer-line2">@LocalisationService.GetString("Ashley Gibson")</div>
-        <div class="objectContainer-line3">@LocalisationService.GetString("Senior Software Engineer") - <a href="https://www.asos.com/" target="_blank">@LocalisationService.GetString("ASOS")</a></div>
-
-        <div class="objectContainer-socialRow">
-            <a href="http://www.facebook.com/ashdgibson" target="_blank"><img src="img/social/facebookNew.png" alt="Facebook"></a>
-            &nbsp;
-            <a href="http://www.linkedin.com/in/ashleydgibson" target="_blank"><img src="img/social/linkedInNew.png" alt="LinkedIn"></a>
-            &nbsp;
-            <a href="https://www.instagram.com/gibbo_code" target="_blank"><img src="img/social/instagramNew.png" alt="Instagram"></a>
-            &nbsp;
-            <a href="https://www.twitter.com/gibbo_photos" target="_blank"><img src="img/social/twitterNew.png" alt="Twitter"></a>
-            &nbsp;
-            <a href="mailto:ash.gibson@hotmail.co.uk" target="_self"><img src="img/social/mailNew.png" alt="@LocalisationService.GetString("Email")"></a>
-        </div>
-
-        <div class="homeNav">
-            <div class="homeNav-container">
-                <a class="homeNav-container-home" href="/">@LocalisationService.GetString("Home")</a>
-                <a class="homeNav-container-portfolio" href="portfolio">@LocalisationService.GetString("Portfolio")</a>
-                <a class="homeNav-container-workExperience" href="experience">@LocalisationService.GetString("Experience")</a>
-                <a class="homeNav-container-education" href="education">@LocalisationService.GetString("Education")</a>
-                <a class="homeNav-container-interests" @onclick="NavigateToInterestsPage">@LocalisationService.GetString("Interests")</a>
+    <Ash.Portfolio.Web.Components.Shared.CreditsButton />
+    <div class="container p-0 m-0 h-100">
+        <div class="row align-items-center p-0 h-100">
+            <div class="col-1 p-0">
             </div>
-        </div>
-
-        <div class="homeCV">
-            <a class="homeCV-button" href="docs/Ashley Gibson CV.docx" target="_blank">@LocalisationService.GetString("Download My CV")</a>
+            <div class="col-4 p-0">
+                <Ash.Portfolio.Web.Components.Shared.HomeContainer />
+            </div>
+            <div class="col-7 p-0">
+            </div>
         </div>
     </div>
 </div>
