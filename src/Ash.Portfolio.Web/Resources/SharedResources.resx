@@ -117,7 +117,274 @@
   <resheader name="writer">
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
+  <data name="1 AS Level" xml:space="preserve">
+    <value>1 AS Level</value>
+  </data>
+  <data name="4 A Levels" xml:space="preserve">
+    <value>4 A Levels</value>
+  </data>
+  <data name="8 GCSEs" xml:space="preserve">
+    <value>8 GCSEs</value>
+  </data>
+  <data name="Abstract Factory" xml:space="preserve">
+    <value>Abstract Factory</value>
+  </data>
+  <data name="Applications Engineer" xml:space="preserve">
+    <value>Applications Engineer</value>
+  </data>
+  <data name="Ashley Gibson" xml:space="preserve">
+    <value>Ashley Gibson</value>
+  </data>
+  <data name="ASOS" xml:space="preserve">
+    <value>ASOS</value>
+  </data>
+  <data name="ASOS Senior Software Engineer Bullet 1" xml:space="preserve">
+    <value>Designed, developed, tested and maintained in-house C# .NET Core Web Applications using Azure Cloud Computing</value>
+  </data>
+  <data name="ASOS Senior Software Engineer Bullet 2" xml:space="preserve">
+    <value>Used WebAPI for developing secure internal API endpoints</value>
+  </data>
+  <data name="ASOS Senior Software Engineer Bullet 3" xml:space="preserve">
+    <value>Unit Tested using Moq and Dapper for Microservices and Database mocking</value>
+  </data>
+  <data name="ASOS Senior Software Engineer Bullet 4" xml:space="preserve">
+    <value>Created and managed SQL Databases using Stored Procedures and testing using T-SQL</value>
+  </data>
+  <data name="ASOS Senior Software Engineer Bullet 5" xml:space="preserve">
+    <value>Azure DevOps for CI/CD Pipelines, Source Control and Project Management</value>
+  </data>
+  <data name="ASOS Senior Software Engineer Bullet 6" xml:space="preserve">
+    <value>Developed using TDD and SOLID principles as a standard</value>
+  </data>
+  <data name="BSc (Hons) Computer Science for Games" xml:space="preserve">
+    <value>BSc (Hons) Computer Science for Games</value>
+  </data>
+  <data name="Chain of Responsibility" xml:space="preserve">
+    <value>Chain of Responsibility</value>
+  </data>
+  <data name="Coding Courses" xml:space="preserve">
+    <value>Coding Courses</value>
+  </data>
+  <data name="Complete" xml:space="preserve">
+    <value>Complete</value>
+  </data>
   <data name="Credits" xml:space="preserve">
-    <value>Credits2</value>
+    <value>Credits</value>
+  </data>
+  <data name="Digital Developer" xml:space="preserve">
+    <value>Digital Developer</value>
+  </data>
+  <data name="Download My CV" xml:space="preserve">
+    <value>Download My CV</value>
+  </data>
+  <data name="Education" xml:space="preserve">
+    <value>Education</value>
+  </data>
+  <data name="Email" xml:space="preserve">
+    <value>Email</value>
+  </data>
+  <data name="Experience" xml:space="preserve">
+    <value>Experience</value>
+  </data>
+  <data name="from" xml:space="preserve">
+    <value>from</value>
+  </data>
+  <data name="Gallagher" xml:space="preserve">
+    <value>Gallagher</value>
+  </data>
+  <data name="Gallagher Digital Developer Bullet 1" xml:space="preserve">
+    <value>Designed, developed, tested and maintained C# .NET MVC CMS Websites and Web Applications (HTML/JavaScript/CSS) predominantly using Sitecore</value>
+  </data>
+  <data name="Gallagher Digital Developer Bullet 2" xml:space="preserve">
+    <value>Source Control: Bitbucket, Azure DevOps and TFS</value>
+  </data>
+  <data name="Gallagher Digital Developer Bullet 3" xml:space="preserve">
+    <value>Jenkins and WebDeploy for Continuous Integration and deployment</value>
+  </data>
+  <data name="Gallagher Digital Developer Bullet 4" xml:space="preserve">
+    <value>Microsoft SQL Server Management Studio for database management</value>
+  </data>
+  <data name="Gallagher Digital Developer Bullet 5" xml:space="preserve">
+    <value>Adhered to Government standard security measures for IT Systems including frequent and extensive security training</value>
+  </data>
+  <data name="Games" xml:space="preserve">
+    <value>Games</value>
+  </data>
+  <data name="GitHub" xml:space="preserve">
+    <value>GitHub</value>
+  </data>
+  <data name="Here's what I've learnt..." xml:space="preserve">
+    <value>Here's what I've learnt...</value>
+  </data>
+  <data name="Hey I'm" xml:space="preserve">
+    <value>Hey I'm</value>
+  </data>
+  <data name="Home" xml:space="preserve">
+    <value>Home</value>
+  </data>
+  <data name="Icons made by" xml:space="preserve">
+    <value>Icons made by</value>
+  </data>
+  <data name="In Progress" xml:space="preserve">
+    <value>In Progress</value>
+  </data>
+  <data name="Interests" xml:space="preserve">
+    <value>Interests</value>
+  </data>
+  <data name="InVMA Applications Engineer Bullet 1" xml:space="preserve">
+    <value>Designed, developed, tested and maintained advanced systems for data analysis, control, automation and networking using the ThingWorx IDE</value>
+  </data>
+  <data name="InVMA Applications Engineer Bullet 2" xml:space="preserve">
+    <value>Worked as an integral part of a team, and independently, to produce systems for global clients such as Doosan Babcock, Rotork and Atlas Copco</value>
+  </data>
+  <data name="InVMA Applications Engineer Bullet 3" xml:space="preserve">
+    <value>Attended and hosted meetings with clients and colleagues to create satisfactory products for all end users</value>
+  </data>
+  <data name="InVMA Applications Engineer Bullet 4" xml:space="preserve">
+    <value>Fibonacci-Style Agile Development</value>
+  </data>
+  <data name="InVMA Ltd (Konektio AssetMinder)" xml:space="preserve">
+    <value>InVMA Ltd (Konektio AssetMinder)</value>
+  </data>
+  <data name="is licensed by" xml:space="preserve">
+    <value>is licensed by</value>
+  </data>
+  <data name="Jump! - C# Unity" xml:space="preserve">
+    <value>Jump! - C# Unity</value>
+  </data>
+  <data name="Junior Developer" xml:space="preserve">
+    <value>Junior Developer</value>
+  </data>
+  <data name="Miller Solutions Ltd" xml:space="preserve">
+    <value>Miller Solutions Ltd</value>
+  </data>
+  <data name="Miller Solutions Software Developer Bullet 1" xml:space="preserve">
+    <value>Designed, developed, tested and maintained C# ASP.NET Core Web Applications, WordPress websites and NOPCommerce websites</value>
+  </data>
+  <data name="Miller Solutions Software Developer Bullet 2" xml:space="preserve">
+    <value>Microsoft SQL Server Database management, Searchlight server maintenance, Dynamics 365 CRM ticketing and IT Glue documentation management</value>
+  </data>
+  <data name="Miller Solutions Software Developer Bullet 3" xml:space="preserve">
+    <value>Produced Release Notes, Bug Logs and other documentation records for both End Users and internal developers</value>
+  </data>
+  <data name="My career so far..." xml:space="preserve">
+    <value>My career so far...</value>
+  </data>
+  <data name="My experiences in pictures..." xml:space="preserve">
+    <value>My experiences in pictures...</value>
+  </data>
+  <data name="My projects so far..." xml:space="preserve">
+    <value>My projects so far...</value>
+  </data>
+  <data name="Netherthorpe School" xml:space="preserve">
+    <value>Netherthorpe School</value>
+  </data>
+  <data name="Netherthorpe School &amp; Sixth Form" xml:space="preserve">
+    <value>Netherthorpe School &amp; Sixth Form</value>
+  </data>
+  <data name="Number Manipulator" xml:space="preserve">
+    <value>Number Manipulator</value>
+  </data>
+  <data name="or click the project links below" xml:space="preserve">
+    <value>or click the project links below</value>
+  </data>
+  <data name="or view my" xml:space="preserve">
+    <value>or view my</value>
+  </data>
+  <data name="Path Finder" xml:space="preserve">
+    <value>Path Finder</value>
+  </data>
+  <data name="Please visit my" xml:space="preserve">
+    <value>Please visit my</value>
+  </data>
+  <data name="PluralSight" xml:space="preserve">
+    <value>PluralSight</value>
+  </data>
+  <data name="PluralSight Bullet 1" xml:space="preserve">
+    <value>Topics studied: C#, .NET, Security, Docker, Kubernetes, Jenkins and Sitecore</value>
+  </data>
+  <data name="PluralSight Bullet 2" xml:space="preserve">
+    <value>Courses completed: 15</value>
+  </data>
+  <data name="PluralSight Bullet 3" xml:space="preserve">
+    <value>Hours watched: 43.55</value>
+  </data>
+  <data name="PluralSight Bullet 4" xml:space="preserve">
+    <value>My PluralSight link:</value>
+  </data>
+  <data name="Portfolio" xml:space="preserve">
+    <value>Portfolio</value>
+  </data>
+  <data name="QUBA Junior Developer Bullet 1" xml:space="preserve">
+    <value>Designed, developed, tested and maintained C# .NET CMS Websites and Web Applications</value>
+  </data>
+  <data name="QUBA Junior Developer Bullet 2" xml:space="preserve">
+    <value>CMS Platforms: Kentico, Sitefinity, SiteCore, Umbraco</value>
+  </data>
+  <data name="QUBA Junior Developer Bullet 3" xml:space="preserve">
+    <value>SharePoint, Jira and Confluence for documentation and development tracking</value>
+  </data>
+  <data name="QUBA Junior Developer Bullet 4" xml:space="preserve">
+    <value>Source Control: Bitbucket - TortoiseSVN and Sourcetree</value>
+  </data>
+  <data name="QUBA Junior Developer Bullet 5" xml:space="preserve">
+    <value>Microsoft SQL Server Management Studio for database management</value>
+  </data>
+  <data name="QUBA New Media Ltd" xml:space="preserve">
+    <value>QUBA New Media Ltd</value>
+  </data>
+  <data name="Searching Algorithms" xml:space="preserve">
+    <value>Searching Algorithms</value>
+  </data>
+  <data name="Senior Prefect, Form Representative and Sports Leader" xml:space="preserve">
+    <value>Senior Prefect, Form Representative and Sports Leader</value>
+  </data>
+  <data name="Senior Software Engineer" xml:space="preserve">
+    <value>Senior Software Engineer</value>
+  </data>
+  <data name="Shadows - C++ DirectX 11" xml:space="preserve">
+    <value>Shadows - C++ DirectX 11</value>
+  </data>
+  <data name="Sheffield Hallam University" xml:space="preserve">
+    <value>Sheffield Hallam University</value>
+  </data>
+  <data name="Sheffield Hallam University Bullet 1" xml:space="preserve">
+    <value>Programming languages: C++, C#, C for Robotics, VB, JavaScript, HTML, CSS, PHP, SQL, Python and Assembly</value>
+  </data>
+  <data name="Sheffield Hallam University Bullet 2" xml:space="preserve">
+    <value>Software used: Visual Studio, Unity</value>
+  </data>
+  <data name="Sheffield Hallam University Bullet 3" xml:space="preserve">
+    <value>Source Control: Bitbucket with Source Tree</value>
+  </data>
+  <data name="Sheffield Hallam University Bullet 4" xml:space="preserve">
+    <value>Take a look at the Games area of my</value>
+  </data>
+  <data name="Social Media icons created by" xml:space="preserve">
+    <value>Social Media icons created by</value>
+  </data>
+  <data name="Software Developer" xml:space="preserve">
+    <value>Software Developer</value>
+  </data>
+  <data name="SOLID Principles" xml:space="preserve">
+    <value>SOLID Principles</value>
+  </data>
+  <data name="Spot and the Zombies" xml:space="preserve">
+    <value>Spot and the Zombies</value>
+  </data>
+  <data name="Stable Matching" xml:space="preserve">
+    <value>Stable Matching</value>
+  </data>
+  <data name="Stock Market Dashboard" xml:space="preserve">
+    <value>Stock Market Dashboard</value>
+  </data>
+  <data name="Tic Tac Toe" xml:space="preserve">
+    <value>Tic Tac Toe</value>
+  </data>
+  <data name="Warriors Walk - C# Unity (Mobile Game with .apk)" xml:space="preserve">
+    <value>Warriors Walk - C# Unity (Mobile Game with .apk)</value>
+  </data>
+  <data name="Web Quiz" xml:space="preserve">
+    <value>Web Quiz</value>
   </data>
 </root>

@@ -4,14 +4,14 @@
 
 <div class="navBar">
     <div class="navBar-container">
-        <a class="navBar-container-home" href="/">Home</a>
-        <a class="navBar-container-portfolio" href="portfolio">Portfolio</a>
-        <a class="navBar-container-experience" href="experience">Experience</a>
-        <a class="navBar-container-education" href="education">Education</a>
-        <a class="navBar-container-interests" @onclick="NavigateToInterestsPage">Interests</a>
+        <a class="navBar-container-home" href="/">@LocalisationService.GetString("Home")</a>
+        <a class="navBar-container-portfolio" href="portfolio">@LocalisationService.GetString("Portfolio")</a>
+        <a class="navBar-container-experience" href="experience">@LocalisationService.GetString("Experience")</a>
+        <a class="navBar-container-education" href="education">@LocalisationService.GetString("Education")</a>
+        <a class="navBar-container-interests" @onclick="NavigateToInterestsPage">@LocalisationService.GetString("Interests")</a>
     </div>
 </div>
 
 <div class="globalCV">
-    <a class="globalCV-button" href="docs/Ashley Gibson CV.docx" target="_blank">Download my CV</a>
+    <a class="globalCV-button" href="docs/Ashley Gibson CV.docx" target="_blank">@LocalisationService.GetString("Download my CV")</a>
 </div>
