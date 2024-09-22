@@ -1,5 +1,5 @@
 ﻿using Ash.Portfolio.Web.Components;
-using Ash.Portfolio.Web.ServiceCollectionExtensions;
+using Ash.Portfolio.Web.Framework.ServiceCollectionExtensions;
 using Microsoft.AspNetCore.Mvc.Razor;
 
 namespace Ash.Portfolio.Web;

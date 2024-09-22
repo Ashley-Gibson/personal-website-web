@@ -1,7 +1,7 @@
 ﻿using Ash.Portfolio.Web.Resources;
 using Microsoft.AspNetCore.Localization;
 
-namespace Ash.Portfolio.Web.ServiceCollectionExtensions;
+namespace Ash.Portfolio.Web.Framework.ServiceCollectionExtensions;
 
 public static class LocalisationServiceCollectionExtensions
 {

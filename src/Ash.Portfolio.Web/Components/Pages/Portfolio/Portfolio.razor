@@ -1,0 +1,23 @@
+﻿@page "/portfolio"
+
+<PageTitle>@LocalisationService.GetString("Ashley Gibson") - @LocalisationService.GetString("Portfolio")</PageTitle>
+
+<div class="container p-0">
+
+    <Ash.Portfolio.Web.Components.Shared.PageTitle LocalisedString="My projects so far..." />
+
+    <div class="row fw-bold text-center mt-2">
+        <p class="fs-3 m-0" style="color: #228B22;">
+            @LocalisationService.GetString("Please visit my") <a href="https://github.com/Ashley-Gibson" target="_blank">@LocalisationService.GetString("GitHub")</a> @LocalisationService.GetString("or click the project links below")
+        </p>
+    </div>
+
+    <Ash.Portfolio.Web.Components.Pages.Portfolio.PortfolioSelector />
+
+    <Ash.Portfolio.Web.Components.Pages.Portfolio.ProjectsGrid />
+
+</div>
+
+<Ash.Portfolio.Web.Components.Shared.NavBar />
+
+<Ash.Portfolio.Web.Components.Shared.CVButton />
