@@ -3,20 +3,9 @@
 	$('.gamesPortfolio').css('display', 'none');
 	$('.inProgressPortfolio').css('display', 'flex');
 
-	$('.portfolioSelector-inProgressButton').css(
-		{
-			"font-weight": "bold",
-			"text-decoration": "none"
-		});
-	$('.portfolioSelector-completeButton').css(
-		{
-			"font-weight": "normal",
-		});
-
-	$('.portfolioSelector-gamesButton').css(
-		{
-			"font-weight": "normal",
-		});
+	$('.portfolioSelector-completeButton').removeClass("fw-bold");
+	$('.portfolioSelector-gamesButton').removeClass("fw-bold");
+	$('.portfolioSelector-inProgressButton').addClass("fw-bold");
 }
 
 function showCompletePortfolio() {
@@ -24,21 +13,9 @@ function showCompletePortfolio() {
 	$('.gamesPortfolio').css('display', 'none');
 	$('.completePortfolio').css('display', 'flex');
 
-	$('.portfolioSelector-completeButton').css(
-		{
-			"font-weight": "bold",
-			"text-decoration": "none"
-		}
-	);
-	$('.portfolioSelector-inProgressButton').css(
-		{
-			"font-weight": "normal",
-		});
-
-	$('.portfolioSelector-gamesButton').css(
-		{
-			"font-weight": "normal",
-		});
+	$('.portfolioSelector-completeButton').addClass("fw-bold");
+	$('.portfolioSelector-gamesButton').removeClass("fw-bold");
+	$('.portfolioSelector-inProgressButton').removeClass("fw-bold");
 }
 
 function showGamesPortfolio() {
@@ -46,19 +23,7 @@ function showGamesPortfolio() {
 	$('.completePortfolio').css('display', 'none');
 	$('.gamesPortfolio').css('display', 'flex');
 
-	$('.portfolioSelector-completeButton').css(
-		{
-			"font-weight": "normal",
-		});
-
-	$('.portfolioSelector-inProgressButton').css(
-		{
-			"font-weight": "normal",
-		});
-
-	$('.portfolioSelector-gamesButton').css(
-		{
-			"font-weight": "bold",
-			"text-decoration": "none"
-		});
+	$('.portfolioSelector-completeButton').removeClass("fw-bold");
+	$('.portfolioSelector-gamesButton').addClass("fw-bold");
+	$('.portfolioSelector-inProgressButton').removeClass("fw-bold");
 }
