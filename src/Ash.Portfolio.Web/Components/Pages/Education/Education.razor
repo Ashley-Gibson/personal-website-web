@@ -1,73 +1,62 @@
 ﻿@page "/education"
+@using Ash.Portfolio.Web.Components.Models;
+
+@{
+    List<ContentRow> ContentRows = new()
+    {
+        new()
+        {
+            LocalisedPrimaryTitle = "PluralSight",
+            LocalisedSecondaryTitle = "Coding Courses",
+            HtmlDescriptionList = new()
+            {
+                { LocalisationService.GetString("PluralSight Bullet 1") },
+                { LocalisationService.GetString("PluralSight Bullet 2") },
+                { LocalisationService.GetString("PluralSight Bullet 3") },
+                { 
+                    $"{LocalisationService.GetString("My PluralSight link")}: <a href=\"https://app.pluralsight.com/profile/ashley-gibson\" target=\"_blank\">{LocalisationService.GetString("PluralSight")}</a>"
+                }
+            },
+            LogoPath = "img/education/pluralsight.png",
+            LogoUrl = "https://www.shu.ac.uk/"
+        },
+        new()
+        {
+            LocalisedPrimaryTitle = "Sheffield Hallam University",
+            LocalisedSecondaryTitle = "BSc (Hons) Computer Science for Games",
+            HtmlDescriptionList = new()
+            {
+                { LocalisationService.GetString("Sheffield Hallam University Bullet 1") },
+                { LocalisationService.GetString("Sheffield Hallam University Bullet 2") },
+                { LocalisationService.GetString("Sheffield Hallam University Bullet 3") },
+                { $"{LocalisationService.GetString("Sheffield Hallam University Bullet 4")} <a href=\"/portfolio\" target=\"_blank\">{LocalisationService.GetString("Portfolio")}</a> {LocalisationService.GetString("or view my")} <a href=\"https://github.com/Ashley-Gibson\" target=\"_blank\">{LocalisationService.GetString("GitHub")}</a>" },
+            },
+            LogoPath = "img/education/SHU.png",
+            LogoUrl = "https://www.shu.ac.uk/"
+        },
+        new()
+        {
+            LocalisedPrimaryTitle = "Netherthorpe School",
+            LocalisedSecondaryTitle = "Netherthorpe School & Sixth Form",
+            HtmlDescriptionList = new()
+            {
+                { LocalisationService.GetString("4 A Levels") },
+                { LocalisationService.GetString("1 AS Level") },
+                { LocalisationService.GetString("8 GCSEs") },
+                { LocalisationService.GetString("Senior Prefect, Form Representative and Sports Leader") }
+            },
+            LogoPath = "img/education/netherthorpe.png",
+            LogoUrl = "https://www.netherthorpe.academy/"
+        }
+    };
+}
 
 <PageTitle>@LocalisationService.GetString("Ashley Gibson") - @LocalisationService.GetString("Education")</PageTitle>
 
-<div class="educationBody">
-    <div class="page">
+<div class="container p-3 pt-0">
+    <Ash.Portfolio.Web.Components.Shared.PageTitle LocalisedString="Here's what I've learnt..." />
 
-        <div class="mainLayer">
-            <div class="mainLayer-header">
-                <div class="mainLayer-header-text">@LocalisationService.GetString("Here's what I've learnt...")</div>
-            </div>
-
-            <div class="educationTable">
-
-                <div class="educationTable-item">
-                    <div class="educationTable-item-image">
-                        <a class="educationTable-item-image-anchor" href="https://www.pluralsight.com/" target="_blank">
-                            <img src="img/education/pluralsight.png">
-                        </a>
-                    </div>
-                    <div class="educationTable-item-text">
-                        <h1><a href="https://www.shu.ac.uk/" target="_blank" style="font-weight: bold;">@LocalisationService.GetString("PluralSight")</a></h1>
-                        <h2>@LocalisationService.GetString("Coding Courses")</h2>
-                        <ul>
-                            <li>@LocalisationService.GetString("PluralSight Bullet 1")</li>
-                            <li>@LocalisationService.GetString("PluralSight Bullet 2")</li>
-                            <li>@LocalisationService.GetString("PluralSight Bullet 3")</li>
-                            <li>@LocalisationService.GetString("PluralSight Bullet 4")<a href="https://app.pluralsight.com/profile/ashley-gibson" target="_blank">@LocalisationService.GetString("PluralSight")</a></li>
-                        </ul>
-                    </div>
-                </div>
-
-                <div class="educationTable-item">
-                    <div class="educationTable-item-image">
-                        <a class="educationTable-item-image-anchor" href="https://www.shu.ac.uk/" target="_blank">
-                            <img src="img/education/SHU.png">
-                        </a>
-                    </div>
-                    <div class="educationTable-item-text">
-                        <h1><a href="https://www.shu.ac.uk/" target="_blank" style="font-weight: bold;">@LocalisationService.GetString("Sheffield Hallam University")</a></h1>
-                        <h2>@LocalisationService.GetString("BSc (Hons) Computer Science for Games")</h2>
-                        <ul>
-                            <li>@LocalisationService.GetString("Sheffield Hallam University Bullet 1")</li>
-                            <li>@LocalisationService.GetString("Sheffield Hallam University Bullet 2")</li>
-                            <li>@LocalisationService.GetString("Sheffield Hallam University Bullet 3")</li>
-                            <li>@LocalisationService.GetString("Sheffield Hallam University Bullet 4") <a href="/portfolio">@LocalisationService.GetString("Portfolio")</a> @LocalisationService.GetString("or view my") <a href="https://github.com/Ashley-Gibson" target="_blank">@LocalisationService.GetString("GitHub")</a></li>
-                        </ul>
-                    </div>
-                </div>
-
-                <div class="educationTable-item">
-                    <div class="educationTable-item-image">
-                        <a class="educationTable-item-image-anchor" href="https://www.netherthorpe.academy/" target="_blank">
-                            <img src="img/education/netherthorpe.png">
-                        </a>
-                    </div>
-                    <div class="educationTable-item-text">
-                        <h1><a href="https://www.netherthorpe.academy/" target="_blank" style="font-weight: bold;">@LocalisationService.GetString("Netherthorpe School")</a></h1>
-                        <h2>@LocalisationService.GetString("Netherthorpe School & Sixth Form")</h2>
-                        <ul>
-                            <li>@LocalisationService.GetString("4 A Levels")</li>
-                            <li>@LocalisationService.GetString("1 AS Level")</li>
-                            <li>@LocalisationService.GetString("8 GCSEs")</li>
-                            <li>@LocalisationService.GetString("Senior Prefect, Form Representative and Sports Leader")</li>
-                        </ul>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </div>
+    <Ash.Portfolio.Web.Components.Shared.ContentGrid ContentRows="@ContentRows" />
 </div>
 
 <Ash.Portfolio.Web.Components.Shared.NavBar />

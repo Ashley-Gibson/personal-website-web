@@ -2,7 +2,7 @@
 
 namespace Ash.Portfolio.Web.Components.Pages;
 
-public class PageTitleBase : ComponentBase
+public class PageTitleBase : PageBase
 {
     [Parameter]
     public string LocalisedString { get; set; } = string.Empty;

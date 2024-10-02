@@ -1,0 +1,29 @@
+﻿@using Ash.Portfolio.Web.Components.Models;
+@using Ash.Portfolio.Web.Components.Pages;
+@using Microsoft.AspNetCore.Html
+
+@foreach (var row in ContentRows)
+{
+    <div class="row m-0 p-2 text-center">
+        <div class="col-5 p-0 m-auto">
+            <a class="experienceTable-item-image" href="@row.LogoUrl" target="_blank">
+                <img src="@row.LogoPath">
+            </a>
+        </div>
+        <div class="col-7 p-0">
+            <h2 class="m-0"><a class="fw-bold" href="row.LogoUrl" target="_blank">@LocalisationService.GetString(row.LocalisedPrimaryTitle)</a></h2>
+            <p class="fs-3 m-0 fw-bold" style="color: #228B22;">@LocalisationService.GetString(row.LocalisedSecondaryTitle)</p>
+            <ul class="text-start">
+                @foreach (var item in row.HtmlDescriptionList)
+                {
+                    <li>@((MarkupString)item)</li>
+                }
+            </ul>
+        </div>
+    </div>
+}
+
+@code{
+    [Parameter]
+    public List<ContentRow> ContentRows { get; set; } = [];
+}
