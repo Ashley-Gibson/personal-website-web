@@ -1,13 +1,91 @@
 ﻿@page "/experience"
+@using Ash.Portfolio.Web.Components.Models
+
+@{
+    List<ContentRow> ContentRows = new()
+    {
+        new()
+        {
+            LocalisedPrimaryTitle = "ASOS",
+            LocalisedSecondaryTitle = "Senior Software Engineer",
+            HtmlDescriptionList = new()
+            {
+                { LocalisationService.GetString("ASOS Senior Software Engineer Bullet 1") },
+                { LocalisationService.GetString("ASOS Senior Software Engineer Bullet 2") },
+                { LocalisationService.GetString("ASOS Senior Software Engineer Bullet 3") },
+                { LocalisationService.GetString("ASOS Senior Software Engineer Bullet 4") },
+                { LocalisationService.GetString("ASOS Senior Software Engineer Bullet 5") },
+                { LocalisationService.GetString("ASOS Senior Software Engineer Bullet 6") },
+            },
+            LogoPath = "img/experience/asos.jpg",
+            LogoUrl = "https://www.asos.com/"
+        },
+        new()
+        {
+            LocalisedPrimaryTitle = "Gallagher",
+            LocalisedSecondaryTitle = "Digital Developer",
+            HtmlDescriptionList = new()
+            {
+                { LocalisationService.GetString("Gallagher Digital Developer Bullet 1") },
+                { LocalisationService.GetString("Gallagher Digital Developer Bullet 2") },
+                { LocalisationService.GetString("Gallagher Digital Developer Bullet 3") },
+                { LocalisationService.GetString("Gallagher Digital Developer Bullet 4") },
+                { LocalisationService.GetString("Gallagher Digital Developer Bullet 5") },
+            },
+            LogoPath = "img/experience/gallagher.png",
+            LogoUrl = "https://www.ajg.com/"
+        },
+        new()
+        {
+            LocalisedPrimaryTitle = "QUBA New Media Ltd",
+            LocalisedSecondaryTitle = "Junior Developer",
+            HtmlDescriptionList = new()
+            {
+                { LocalisationService.GetString("QUBA Junior Developer Bullet 1") },
+                { LocalisationService.GetString("QUBA Junior Developer Bullet 2") },
+                { LocalisationService.GetString("QUBA Junior Developer Bullet 3") },
+                { LocalisationService.GetString("QUBA Junior Developer Bullet 4") },
+                { LocalisationService.GetString("QUBA Junior Developer Bullet 5") },
+            },
+            LogoPath = "img/experience/quba.png",
+            LogoUrl = "https://www.quba.co.uk"
+        },
+        new()
+        {
+            LocalisedPrimaryTitle = "Miller Solutions Ltd",
+            LocalisedSecondaryTitle = "Software Developer",
+            HtmlDescriptionList = new()
+            {
+                { LocalisationService.GetString("Miller Solutions Software Developer Bullet 1") },
+                { LocalisationService.GetString("Miller Solutions Software Developer Bullet 2") },
+                { LocalisationService.GetString("Miller Solutions Software Developer Bullet 3") },
+            },
+            LogoPath = "img/experience/millerSolutions.png",
+            LogoUrl = "https://www.millersolutions.co.uk"
+        },
+        new()
+        {
+            LocalisedPrimaryTitle = "InVMA Ltd (Konektio AssetMinder)",
+            LocalisedSecondaryTitle = "Applications Engineer",
+            HtmlDescriptionList = new()
+            {
+                { LocalisationService.GetString("InVMA Applications Engineer Bullet 1") },
+                { LocalisationService.GetString("InVMA Applications Engineer Bullet 2") },
+                { LocalisationService.GetString("InVMA Applications Engineer Bullet 3") },
+                { LocalisationService.GetString("InVMA Applications Engineer Bullet 4") },
+            },
+            LogoPath = "img/experience/invma.png",
+            LogoUrl = "https://assetminder.io/"
+        }
+    };
+}
 
 <PageTitle>@LocalisationService.GetString("Ashley Gibson") - @LocalisationService.GetString("Experience")</PageTitle>
 
-<div class="container p-0">
-
+<div class="container p-3 pt-0">
     <Ash.Portfolio.Web.Components.Shared.PageTitle LocalisedString="My career so far..." />
-    
-    <Ash.Portfolio.Web.Components.Pages.Experience.ExperienceGrid />
 
+    <Ash.Portfolio.Web.Components.Shared.ContentGrid ContentRows="@ContentRows" />
 </div>
 
 <Ash.Portfolio.Web.Components.Shared.NavBar />

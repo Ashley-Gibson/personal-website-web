@@ -529,6 +529,15 @@ namespace Ash.Portfolio.Web.Resources {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to My PluralSight link.
+        /// </summary>
+        internal static string My_PluralSight_link {
+            get {
+                return ResourceManager.GetString("My PluralSight link", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to My projects so far....
         /// </summary>
         internal static string My_projects_so_far___ {
