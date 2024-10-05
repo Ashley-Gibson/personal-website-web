@@ -4,37 +4,14 @@
 
 <div class="photographyBody">
     <div class="page">
+        <Ash.Portfolio.Web.Components.Shared.PageTitle LocalisedString="My experiences in pictures..." />
 
         <div class="mainLayer">
-            <div class="mainLayer-header">
-                <div class="mainLayer-header-text">@LocalisationService.GetString("My experiences in pictures...")</div>
-            </div>
-
-            <div class="photographyTable">
-                <div class="leftArrow" onclick="photographyTable_leftArrow()"></div>
-
-                <a class="imgShow imgFadeIn" href="https://www.instagram.com/gibbo_code" target="_blank">
-                    <div class="imgContainer"><img src="" object-fit="cover" /></div>
-                    <div class="imgContainer"><img src="" object-fit="cover" /></div>
-                    <div class="imgContainer"><img src="" object-fit="cover"/></div>
-                    <div class="imgContainer"><img src="" object-fit="cover"/></div>
-                    <div class="imgContainer"><img src="" object-fit="cover"/></div>
-                    <div class="imgContainer"><img src="" object-fit="cover"/></div>
-                    <div class="imgContainer"><img src="" object-fit="cover"/></div>
-                    <div class="imgContainer"><img src="" object-fit="cover"/></div>
-                    <div class="imgContainer"><img src="" object-fit="cover"/></div>
-                    <div class="imgContainer"><img src="" object-fit="cover"/></div>
-                    <div class="imgContainer"><img src="" object-fit="cover"/></div>
-                    <div class="imgContainer"><img src="" object-fit="cover"/></div>
-                    <div class="imgContainer"><img src="" object-fit="cover"/></div>
-                    <div class="imgContainer"><img src="" object-fit="cover"/></div>
-                    <div class="imgContainer"><img src="" object-fit="cover"/></div>
-                </a>
-
-                <div class="rightArrow" onclick="photographyTable_rightArrow()"></div>
-            </div>
+            <Ash.Portfolio.Web.Components.Pages.Interests.PhotoGallery />
         </div>
     </div>
 </div>
 
 <Ash.Portfolio.Web.Components.Shared.NavBar />
+
+<Ash.Portfolio.Web.Components.Shared.CVButton />
