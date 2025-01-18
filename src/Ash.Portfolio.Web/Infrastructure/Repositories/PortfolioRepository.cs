@@ -15,7 +15,7 @@ public class PortfolioRepository : IPortfolioRepository
         _database = databaseFactory.GetDatabase(DatabaseName.Ash_Portfolio_Database);
     }
 
-    public IEnumerable<Project> GetRolesWithDescription()
+    public IEnumerable<Project> GetProjects()
     {
         var p = new DynamicParameters();
 
