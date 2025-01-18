@@ -8,7 +8,7 @@ var imageList;
 
 var photoSet = 0;
 
-$(document).ready(function () {
+$(function () {
     if (window.location.pathname.indexOf('interests') != -1)
     {
         allImages[0] = "img/camera/lightCinema.png";
