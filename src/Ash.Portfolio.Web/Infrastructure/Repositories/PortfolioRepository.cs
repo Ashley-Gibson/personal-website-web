@@ -15,10 +15,10 @@ public class PortfolioRepository : IPortfolioRepository
         _database = databaseFactory.GetDatabase(DatabaseName.Ash_Portfolio_Database);
     }
 
-    public IEnumerable<Project> GetProjects()
+    public async Task<IEnumerable<Project>> GetProjectsAsync()
     {
         var p = new DynamicParameters();
 
-        return _database.Query<Project>("[Portfolio].[uspGetProjects]", p);
+        return await _database.QueryAsync<Project>("[Portfolio].[uspGetProjects]", p);
     }
 }

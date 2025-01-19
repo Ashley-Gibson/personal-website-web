@@ -4,5 +4,5 @@ namespace Ash.Portfolio.Web.Infrastructure.Repositories;
 
 public interface IPortfolioRepository
 {
-    IEnumerable<Project> GetProjects();
+    Task<IEnumerable<Project>> GetProjectsAsync();
 }
