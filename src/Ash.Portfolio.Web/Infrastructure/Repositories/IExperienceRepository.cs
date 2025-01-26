@@ -4,5 +4,5 @@ namespace Ash.Portfolio.Web.Infrastructure.Repositories;
 
 public interface IExperienceRepository
 {
-    IEnumerable<Role> GetRolesWithDescription();
+    public IEnumerable<Role> GetRolesWithDescriptions();
 }

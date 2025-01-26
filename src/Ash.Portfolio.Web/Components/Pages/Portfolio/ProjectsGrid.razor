@@ -1,4 +1,24 @@
-﻿@inherits PageBase
+﻿@inherits ComponentBase
+
+@inject IPortfolioRepository PortfolioRepository
+@inject IPortfolioService PortfolioService
+
+@code{
+    private List<Infrastructure.Data.Portfolio.Project> CompleteProjectData { get; set; } = [];
+
+    private List<Infrastructure.Data.Portfolio.Project> InProgressProjectData { get; set; } = [];
+
+    private List<Infrastructure.Data.Portfolio.Project> GamesProjectData { get; set; } = [];
+
+    protected override async Task OnInitializedAsync()
+    {
+        var projects = await PortfolioRepository.GetProjectsAsync();
+
+        CompleteProjectData = PortfolioService.FilterProjectsByType(projects, ProjectType.Complete).ToList();
+        InProgressProjectData = PortfolioService.FilterProjectsByType(projects, ProjectType.InProgress).ToList();
+        GamesProjectData = PortfolioService.FilterProjectsByType(projects, ProjectType.Game).ToList();
+    }
+}
 
 <!-- COMPLETE -->
 <div class="row completePortfolio m-4 mt-0 text-center">

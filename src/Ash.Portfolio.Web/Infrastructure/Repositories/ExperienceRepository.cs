@@ -15,10 +15,32 @@ public class ExperienceRepository : IExperienceRepository
         _database = databaseFactory.GetDatabase(DatabaseName.Ash_Portfolio_Database);
     }
 
-    public IEnumerable<Role> GetRolesWithDescription()
+    private IEnumerable<Role> GetRoles()
     {
         var p = new DynamicParameters();
 
-        return _database.Query<Role>("[Experience].[uspGetRolesWithDescription]", p);
+        return _database.Query<Role>("[Experience].[uspGetRoles]", p);
+    }
+
+    private IEnumerable<RoleDescription> GetRoleDescriptions()
+    {
+        var p = new DynamicParameters();
+
+        return _database.Query<RoleDescription>("[Experience].[uspGetRoleDescriptions]", p);
+    }
+
+    public IEnumerable<Role> GetRolesWithDescriptions()
+    {
+        var roles = GetRoles();
+        var roleDescriptions = GetRoleDescriptions();
+
+        roles
+            .ToList()
+            .ForEach(d =>
+            {
+                d.DescriptionRows = roleDescriptions.Where(r => r.ParentId == d.Id).ToList();
+            });
+
+        return roles;
     }
 }

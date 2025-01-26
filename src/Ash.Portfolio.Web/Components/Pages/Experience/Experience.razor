@@ -1,83 +1,29 @@
 ﻿@page "/experience"
 @using Ash.Portfolio.Web.Components.Models
 
-@{
-    List<ContentRow> ContentRows = new()
+@inject IExperienceRepository ExperienceRepository
+
+@code{
+    private List<Infrastructure.Data.Experience.Role> RoleData { get; set; } = [];
+
+    private List<ContentRow> ContentRows { get; init; } = new();
+
+    protected override void OnInitialized()
     {
-        new()
+        RoleData = ExperienceRepository.GetRolesWithDescriptions().ToList();
+
+        foreach (var role in RoleData)
         {
-            LocalisedPrimaryTitle = "ASOS",
-            LocalisedSecondaryTitle = "Senior Software Engineer",
-            HtmlDescriptionList = new()
-            {
-                { LocalisationService.GetString("ASOS Senior Software Engineer Bullet 1") },
-                { LocalisationService.GetString("ASOS Senior Software Engineer Bullet 2") },
-                { LocalisationService.GetString("ASOS Senior Software Engineer Bullet 3") },
-                { LocalisationService.GetString("ASOS Senior Software Engineer Bullet 4") },
-                { LocalisationService.GetString("ASOS Senior Software Engineer Bullet 5") },
-                { LocalisationService.GetString("ASOS Senior Software Engineer Bullet 6") },
-            },
-            LogoPath = "img/experience/asos.jpg",
-            LogoUrl = "https://www.asos.com/"
-        },
-        new()
-        {
-            LocalisedPrimaryTitle = "Gallagher",
-            LocalisedSecondaryTitle = "Digital Developer",
-            HtmlDescriptionList = new()
-            {
-                { LocalisationService.GetString("Gallagher Digital Developer Bullet 1") },
-                { LocalisationService.GetString("Gallagher Digital Developer Bullet 2") },
-                { LocalisationService.GetString("Gallagher Digital Developer Bullet 3") },
-                { LocalisationService.GetString("Gallagher Digital Developer Bullet 4") },
-                { LocalisationService.GetString("Gallagher Digital Developer Bullet 5") },
-            },
-            LogoPath = "img/experience/gallagher.png",
-            LogoUrl = "https://www.ajg.com/"
-        },
-        new()
-        {
-            LocalisedPrimaryTitle = "QUBA New Media Ltd",
-            LocalisedSecondaryTitle = "Junior Developer",
-            HtmlDescriptionList = new()
-            {
-                { LocalisationService.GetString("QUBA Junior Developer Bullet 1") },
-                { LocalisationService.GetString("QUBA Junior Developer Bullet 2") },
-                { LocalisationService.GetString("QUBA Junior Developer Bullet 3") },
-                { LocalisationService.GetString("QUBA Junior Developer Bullet 4") },
-                { LocalisationService.GetString("QUBA Junior Developer Bullet 5") },
-            },
-            LogoPath = "img/experience/quba.png",
-            LogoUrl = "https://www.quba.co.uk"
-        },
-        new()
-        {
-            LocalisedPrimaryTitle = "Miller Solutions Ltd",
-            LocalisedSecondaryTitle = "Software Developer",
-            HtmlDescriptionList = new()
-            {
-                { LocalisationService.GetString("Miller Solutions Software Developer Bullet 1") },
-                { LocalisationService.GetString("Miller Solutions Software Developer Bullet 2") },
-                { LocalisationService.GetString("Miller Solutions Software Developer Bullet 3") },
-            },
-            LogoPath = "img/experience/millerSolutions.png",
-            LogoUrl = "https://www.millersolutions.co.uk"
-        },
-        new()
-        {
-            LocalisedPrimaryTitle = "InVMA Ltd (Konektio AssetMinder)",
-            LocalisedSecondaryTitle = "Applications Engineer",
-            HtmlDescriptionList = new()
-            {
-                { LocalisationService.GetString("InVMA Applications Engineer Bullet 1") },
-                { LocalisationService.GetString("InVMA Applications Engineer Bullet 2") },
-                { LocalisationService.GetString("InVMA Applications Engineer Bullet 3") },
-                { LocalisationService.GetString("InVMA Applications Engineer Bullet 4") },
-            },
-            LogoPath = "img/experience/invma.png",
-            LogoUrl = "https://assetminder.io/"
+            ContentRows.Add(new ContentRow
+                {
+                    LocalisedPrimaryTitle = role.EmployerName,
+                    LocalisedSecondaryTitle = role.Title,
+                    HtmlDescriptionList = role.DescriptionRows.Select(d => LocalisationService.GetString(d.Text).ToString()).ToList(),
+                    LogoPath = role.ImageLink,
+                    LogoUrl = role.EmployerLink
+                });
         }
-    };
+    }
 }
 
 <PageTitle>@LocalisationService.GetString("Ashley Gibson") - @LocalisationService.GetString("Experience")</PageTitle>
