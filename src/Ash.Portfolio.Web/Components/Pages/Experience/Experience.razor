@@ -3,25 +3,27 @@
 
 @inject IExperienceRepository ExperienceRepository
 
-@code{
+@code {
     private List<Infrastructure.Data.Experience.Role> RoleData { get; set; } = [];
 
     private List<ContentRow> ContentRows { get; init; } = new();
 
-    protected override void OnInitialized()
+    protected override async Task OnInitializedAsync()
     {
-        RoleData = ExperienceRepository.GetRolesWithDescriptions().ToList();
+        var roleData = await ExperienceRepository.GetRolesWithDescriptionsAsync();
+
+        RoleData = roleData.ToList();
 
         foreach (var role in RoleData)
         {
             ContentRows.Add(new ContentRow
-                {
-                    LocalisedPrimaryTitle = role.EmployerName,
-                    LocalisedSecondaryTitle = role.Title,
-                    HtmlDescriptionList = role.DescriptionRows.Select(d => LocalisationService.GetString(d.Text).ToString()).ToList(),
-                    LogoPath = role.ImageLink,
-                    LogoUrl = role.EmployerLink
-                });
+            {
+                LocalisedPrimaryTitle = role.EmployerName,
+                LocalisedSecondaryTitle = role.Title,
+                HtmlDescriptionList = role.DescriptionRows.Select(d => LocalisationService.GetString(d.Text).ToString()).ToList(),
+                LogoPath = role.ImageLink,
+                LogoUrl = role.EmployerLink
+            });
         }
     }
 }

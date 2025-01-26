@@ -15,24 +15,24 @@ public class ExperienceRepository : IExperienceRepository
         _database = databaseFactory.GetDatabase(DatabaseName.Ash_Portfolio_Database);
     }
 
-    private IEnumerable<Role> GetRoles()
+    private async Task<IEnumerable<Role>> GetRolesAsync()
     {
         var p = new DynamicParameters();
 
-        return _database.Query<Role>("[Experience].[uspGetRoles]", p);
+        return await _database.QueryAsync<Role>("[Experience].[uspGetRoles]", p);
     }
 
-    private IEnumerable<RoleDescription> GetRoleDescriptions()
+    private async Task<IEnumerable<RoleDescription>> GetRoleDescriptionsAsync()
     {
         var p = new DynamicParameters();
 
-        return _database.Query<RoleDescription>("[Experience].[uspGetRoleDescriptions]", p);
+        return await _database.QueryAsync<RoleDescription>("[Experience].[uspGetRoleDescriptions]", p);
     }
 
-    public IEnumerable<Role> GetRolesWithDescriptions()
+    public async Task<IEnumerable<Role>> GetRolesWithDescriptionsAsync()
     {
-        var roles = GetRoles();
-        var roleDescriptions = GetRoleDescriptions();
+        var roles = await GetRolesAsync();
+        var roleDescriptions = await GetRoleDescriptionsAsync();
 
         roles
             .ToList()

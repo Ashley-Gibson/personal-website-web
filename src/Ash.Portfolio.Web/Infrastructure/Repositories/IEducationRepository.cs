@@ -4,5 +4,5 @@ namespace Ash.Portfolio.Web.Infrastructure.Repositories;
 
 public interface IEducationRepository
 {
-    IEnumerable<Institute> GetInstitutesWithDescription();
+    Task<IEnumerable<Institute>> GetInstitutesWithDescriptionAsync();
 }
