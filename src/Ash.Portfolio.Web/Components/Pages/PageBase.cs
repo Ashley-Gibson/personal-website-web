@@ -5,10 +5,13 @@ namespace Ash.Portfolio.Web.Components.Pages;
 public class PageBase : ComponentBase
 {
     [Inject]
-    public NavigationManager NavigationManager { get; set; } = default!;
+    internal NavigationManager NavigationManager { get; set; } = default!;
 
-    public void NavigateToInterestsPage()
+    internal const string InterestsPageName = "interests";
+
+
+    internal void NavigateToPage(string pageName)
     {
-        NavigationManager?.NavigateTo("/interests", true);
+        NavigationManager?.NavigateTo($"/{pageName}", true);
     }
 }

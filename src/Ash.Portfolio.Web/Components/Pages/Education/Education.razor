@@ -1,54 +1,31 @@
 ﻿@page "/education"
 @using Ash.Portfolio.Web.Components.Models;
 
-@{
-    List<ContentRow> ContentRows = new()
+@inject IEducationRepository EducationRepository
+
+@code {
+    private List<Infrastructure.Data.Education.Institute> InstituteData { get; set; } = [];
+
+    private List<ContentRow> ContentRows { get; init; } = new();
+
+    protected override async Task OnInitializedAsync()
     {
-        new()
+        var instituteData = await EducationRepository.GetInstitutesWithDescriptionAsync();
+
+        InstituteData = instituteData.ToList();
+
+        foreach (var institute in InstituteData)
         {
-            LocalisedPrimaryTitle = "PluralSight",
-            LocalisedSecondaryTitle = "Coding Courses",
-            HtmlDescriptionList = new()
+            ContentRows.Add(new ContentRow
             {
-                { LocalisationService.GetString("PluralSight Bullet 1") },
-                { LocalisationService.GetString("PluralSight Bullet 2") },
-                { LocalisationService.GetString("PluralSight Bullet 3") },
-                { 
-                    $"{LocalisationService.GetString("My PluralSight link")}: <a href=\"https://app.pluralsight.com/profile/ashley-gibson\" target=\"_blank\">{LocalisationService.GetString("PluralSight")}</a>"
-                }
-            },
-            LogoPath = "img/education/pluralsight.png",
-            LogoUrl = "https://www.shu.ac.uk/"
-        },
-        new()
-        {
-            LocalisedPrimaryTitle = "Sheffield Hallam University",
-            LocalisedSecondaryTitle = "BSc (Hons) Computer Science for Games",
-            HtmlDescriptionList = new()
-            {
-                { LocalisationService.GetString("Sheffield Hallam University Bullet 1") },
-                { LocalisationService.GetString("Sheffield Hallam University Bullet 2") },
-                { LocalisationService.GetString("Sheffield Hallam University Bullet 3") },
-                { $"{LocalisationService.GetString("Sheffield Hallam University Bullet 4")} <a href=\"/portfolio\" target=\"_blank\">{LocalisationService.GetString("Portfolio")}</a> {LocalisationService.GetString("or view my")} <a href=\"https://github.com/Ashley-Gibson\" target=\"_blank\">{LocalisationService.GetString("GitHub")}</a>" },
-            },
-            LogoPath = "img/education/SHU.png",
-            LogoUrl = "https://www.shu.ac.uk/"
-        },
-        new()
-        {
-            LocalisedPrimaryTitle = "Netherthorpe School",
-            LocalisedSecondaryTitle = "Netherthorpe School & Sixth Form",
-            HtmlDescriptionList = new()
-            {
-                { LocalisationService.GetString("4 A Levels") },
-                { LocalisationService.GetString("1 AS Level") },
-                { LocalisationService.GetString("8 GCSEs") },
-                { LocalisationService.GetString("Senior Prefect, Form Representative and Sports Leader") }
-            },
-            LogoPath = "img/education/netherthorpe.png",
-            LogoUrl = "https://www.netherthorpe.academy/"
+                LocalisedPrimaryTitle = institute.Name,
+                LocalisedSecondaryTitle = institute.Title,
+                HtmlDescriptionList = institute.DescriptionRows.Select(d => LocalisationService.GetString(d.Text).ToString()).ToList(),
+                LogoPath = institute.ImageLink,
+                LogoUrl = institute.Link
+            });
         }
-    };
+    }
 }
 
 <PageTitle>@LocalisationService.GetString("Ashley Gibson") - @LocalisationService.GetString("Education")</PageTitle>

@@ -25,7 +25,7 @@
             <a class="homeNav-container-portfolio" href="portfolio">@LocalisationService.GetString("Portfolio")</a>
             <a class="homeNav-container-workExperience" href="experience">@LocalisationService.GetString("Experience")</a>
             <a class="homeNav-container-education" href="education">@LocalisationService.GetString("Education")</a>
-            <a class="homeNav-container-interests" @onclick="NavigateToInterestsPage">@LocalisationService.GetString("Interests")</a>
+            <a class="homeNav-container-interests" @onclick="() => NavigateToPage(InterestsPageName)">@LocalisationService.GetString("Interests")</a>
         </div>
     </div>
 

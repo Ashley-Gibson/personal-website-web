@@ -10,7 +10,8 @@ public class Program
     {
         var builder = WebApplication.CreateBuilder(args);
 
-        // Add services to the container.
+        builder.Configuration.AddJsonFile($"appsettings.Development.json", optional: true, reloadOnChange: true);
+
         builder.Services.AddRazorComponents()
             .AddInteractiveServerComponents();
 
@@ -20,9 +21,13 @@ public class Program
             .AddViewLocalization(LanguageViewLocationExpanderFormat.Suffix)
             .AddDataAnnotationsLocalization();
 
+        builder.Services.AddDatabases(builder.Configuration);
+
+        builder.Services.AddRepositories();
+        builder.Services.AddDomainServices();
+
         var app = builder.Build();
 
-        // Configure the HTTP request pipeline.
         if (!app.Environment.IsDevelopment())
         {
         }

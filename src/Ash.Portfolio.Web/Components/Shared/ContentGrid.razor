@@ -11,7 +11,7 @@
             </a>
         </div>
         <div class="col-7 p-0">
-            <h2 class="m-0"><a class="fw-bold" href="row.LogoUrl" target="_blank">@LocalisationService.GetString(row.LocalisedPrimaryTitle)</a></h2>
+            <h2 class="m-0"><a class="fw-bold" href="@row.LogoUrl" target="_blank">@LocalisationService.GetString(row.LocalisedPrimaryTitle)</a></h2>
             <p class="fs-3 m-0 fw-bold" style="color: #228B22;">@LocalisationService.GetString(row.LocalisedSecondaryTitle)</p>
             <ul class="text-start">
                 @foreach (var item in row.HtmlDescriptionList)

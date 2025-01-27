@@ -1,4 +1,31 @@
-﻿<div class="photographyTable">
+﻿@rendermode InteractiveServer
+
+@using Microsoft.AspNetCore.Mvc.RazorPages;
+@using System.Text
+
+@inject IJSRuntime JSRuntime
+@inject IInterestsRepository InterestsRepository
+
+@code {
+    public string[] PhotoGalleryImageLinks { get; set; } = [];
+
+    protected override async Task OnInitializedAsync()
+    {
+        var photoGalleryImageLinks = await InterestsRepository.GetPhotoGalleryImageLinksAsync();
+
+        PhotoGalleryImageLinks = photoGalleryImageLinks.ToArray();
+    }
+
+    protected override async Task OnAfterRenderAsync(bool firstRender)
+    {
+        if (firstRender)
+        {
+            await JSRuntime.InvokeVoidAsync("loadPhotoGallery");
+        }
+    }
+}
+
+<div class="photographyTable">
     <div class="leftArrow" onclick="photographyTable_leftArrow()"></div>
 
     <a class="imgShow imgFadeIn" href="https://www.instagram.com/gibbo_code" target="_blank">
@@ -21,3 +48,111 @@
 
     <div class="rightArrow" onclick="photographyTable_rightArrow()"></div>
 </div>
+
+<script>
+    var randomNumbers = [];
+    var totalImageCount = 45;
+
+    var imageList;
+
+    var photoSet = 0;
+
+    var allImages;
+    
+    function loadPhotoGallery() {
+        allImages = JSON.parse('@Newtonsoft.Json.JsonConvert.SerializeObject(PhotoGalleryImageLinks)'.replace(/&quot;/g, "\""));
+
+        while (randomNumbers.length < totalImageCount) {
+            var randomInt = (Math.floor(Math.random() * totalImageCount) + 1) - 1;
+            if (randomNumbers.indexOf(randomInt) === -1) {
+                randomNumbers.push(randomInt);
+            }
+        }
+
+        imageList = $('.photographyTable a').find("img");
+
+        for (var i = 0; i < 15; i++) {
+            $(imageList[i]).prop("src", allImages[randomNumbers[i]] + '?' + Math.random());
+        }
+    };
+
+    function sleep(ms) {
+        return new Promise(resolve => setTimeout(resolve, ms));
+    }
+
+    function photographyTable_leftArrow() {
+        //randomNumbers = [];
+
+        // Fade Out
+        $('.photographyTable a').removeClass("imgFadeIn");
+        $('.photographyTable a').addClass("imgFadeOut");
+
+        // Sleep
+        sleep(800);
+
+        // Swap Images
+        for (var i = 0; i < 15; i++) {
+            if (photoSet === 0) {
+                $(imageList[i]).attr('src', allImages[randomNumbers[i + 30]]);
+            }
+            else if (photoSet === 1) {
+                $(imageList[i]).attr('src', allImages[randomNumbers[i]]);
+            }
+            else {
+                $(imageList[i]).attr('src', allImages[randomNumbers[i + 15]]);
+            }
+        }
+
+        // Sleep
+        sleep(200);
+
+        if (photoSet === 0)
+            photoSet = 2;
+        else if (photoSet === 1)
+            photoSet = 0;
+        else
+            photoSet = 1;
+
+        // Fade In
+        $('.photographyTable a').removeClass("imgFadeOut");
+        $('.photographyTable a').addClass("imgFadeIn");
+    }
+
+    function photographyTable_rightArrow() {
+        //randomNumbers = [];
+
+        // Fade Out
+        $('.photographyTable a').removeClass("imgFadeIn");
+        $('.photographyTable a').addClass("imgFadeOut");
+
+        // Sleep
+        sleep(800);
+
+        // Swap Images
+        for (var i = 0; i < 15; i++) {
+            if (photoSet === 0) {
+                $(imageList[i]).attr('src', allImages[randomNumbers[i + 15]]);
+            }
+            else if (photoSet === 1) {
+                $(imageList[i]).attr('src', allImages[randomNumbers[i + 30]]);
+            }
+            else {
+                $(imageList[i]).attr('src', allImages[randomNumbers[i]]);
+            }
+        }
+
+        // Sleep
+        sleep(200);
+
+        if (photoSet === 0)
+            photoSet = 1;
+        else if (photoSet === 1)
+            photoSet = 2;
+        else
+            photoSet = 0;
+
+        // Fade In
+        $('.photographyTable a').removeClass("imgFadeOut");
+        $('.photographyTable a').addClass("imgFadeIn");
+    }
+</script>
