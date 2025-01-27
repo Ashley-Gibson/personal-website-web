@@ -7,8 +7,11 @@ public class PageBase : ComponentBase
     [Inject]
     internal NavigationManager NavigationManager { get; set; } = default!;
 
-    internal void NavigateToInterestsPage()
+    internal const string InterestsPageName = "interests";
+
+
+    internal void NavigateToPage(string pageName)
     {
-        NavigationManager?.NavigateTo("/interests", true);
+        NavigationManager?.NavigateTo($"/{pageName}", true);
     }
 }

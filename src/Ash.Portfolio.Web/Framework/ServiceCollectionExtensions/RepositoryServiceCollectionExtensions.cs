@@ -9,6 +9,7 @@ public static class RepositoryServiceCollectionExtensions
         services.AddTransient<IEducationRepository, EducationRepository>();
         services.AddTransient<IExperienceRepository, ExperienceRepository>();
         services.AddTransient<IPortfolioRepository, PortfolioRepository>();
+        services.AddTransient<IInterestsRepository, InterestsRepository>();
 
         return services;
     }

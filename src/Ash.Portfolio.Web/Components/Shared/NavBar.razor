@@ -8,6 +8,6 @@
         <a class="navBar-container-portfolio" href="portfolio">@LocalisationService.GetString("Portfolio")</a>
         <a class="navBar-container-experience" href="experience">@LocalisationService.GetString("Experience")</a>
         <a class="navBar-container-education" href="education">@LocalisationService.GetString("Education")</a>
-        <a class="navBar-container-interests" @onclick="NavigateToInterestsPage">@LocalisationService.GetString("Interests")</a>
+        <a class="navBar-container-interests" @onclick="() => NavigateToPage(InterestsPageName)">@LocalisationService.GetString("Interests")</a>
     </div>
 </div>
