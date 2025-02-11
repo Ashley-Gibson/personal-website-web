@@ -1,6 +1,6 @@
 ﻿using Ash.Portfolio.Web.Infrastructure.Data.Portfolio;
 
-namespace Ash.Portfolio.Web.Domain;
+namespace Ash.Portfolio.Web.Domain.Portfolio;
 
 public interface IPortfolioService
 {

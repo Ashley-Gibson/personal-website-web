@@ -23,7 +23,7 @@ public class Program
 
         builder.Services.AddDatabases(builder.Configuration);
 
-        builder.Services.AddRepositories();
+        builder.Services.AddInfrastructure();
         builder.Services.AddDomainServices();
 
         var app = builder.Build();

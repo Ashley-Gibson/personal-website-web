@@ -1,4 +1,4 @@
-﻿using Ash.Portfolio.Web.Domain;
+﻿using Ash.Portfolio.Web.Domain.Portfolio;
 
 namespace Ash.Portfolio.Web.Framework.ServiceCollectionExtensions;
 
