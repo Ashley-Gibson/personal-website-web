@@ -1,4 +1,5 @@
-﻿using Ash.Portfolio.Web.Infrastructure.Data.Education;
+﻿using Ash.Portfolio.Web.Framework.Database.Constants;
+using Ash.Portfolio.Web.Infrastructure.Data.Education;
 using Ash.Portfolio.Web.Infrastructure.Repositories;
 using Ash.Portfolio.Web.Tests.Base;
 using Dapper;
@@ -19,7 +20,7 @@ public class EducationRepository_Tests : BaseTest
     {
         // Arrange
         MainDatabase
-            .QueryAsync<Institute>("[Education].[uspGetInstitutes]", Arg.Any<DynamicParameters>())
+            .QueryAsync<Institute>(SQLConstants.EducationGetInstitutes, Arg.Any<DynamicParameters>())
             .Returns(
                 [
                     new() { Id = 1, Name = "Institute1", DescriptionRows = [new() { ParentId = 1, Text = "Text1" }], ImageLink = "ImageLink1", Link = "Link1", Title = "Title1" },
@@ -32,7 +33,7 @@ public class EducationRepository_Tests : BaseTest
         // Assert
         Received.InOrder(() =>
         {
-            MainDatabase.Received(1).QueryAsync<Institute>("[Education].[uspGetInstitutes]", Arg.Any<DynamicParameters>());
+            MainDatabase.Received(1).QueryAsync<Institute>(SQLConstants.EducationGetInstitutes, Arg.Any<DynamicParameters>());
         });
 
         var instituteList = institutes.ToList();
@@ -49,7 +50,7 @@ public class EducationRepository_Tests : BaseTest
     {
         // Arrange
         MainDatabase
-            .QueryAsync<Institute>("[Education].[uspGetInstitutes]", Arg.Any<DynamicParameters>())
+            .QueryAsync<Institute>(SQLConstants.EducationGetInstitutes, Arg.Any<DynamicParameters>())
             .Returns([]);
 
         // Act
@@ -58,7 +59,7 @@ public class EducationRepository_Tests : BaseTest
         // Assert
         Received.InOrder(() =>
         {
-            MainDatabase.Received(1).QueryAsync<Institute>("[Education].[uspGetInstitutes]", Arg.Any<DynamicParameters>());
+            MainDatabase.Received(1).QueryAsync<Institute>(SQLConstants.EducationGetInstitutes, Arg.Any<DynamicParameters>());
         });
 
         Assert.Empty(institutes);

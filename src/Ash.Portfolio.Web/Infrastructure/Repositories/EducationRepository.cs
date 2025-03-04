@@ -19,13 +19,13 @@ public class EducationRepository : IEducationRepository
     {
         var p = new DynamicParameters();
 
-        return await _database.QueryAsync<Institute>("[Education].[uspGetInstitutes]", p);
+        return await _database.QueryAsync<Institute>(SQLConstants.EducationGetInstitutes, p);
     }
 
     public async Task<IEnumerable<InstituteDescription>> GetInstituteDescriptionsAsync()
     {
         var p = new DynamicParameters();
 
-        return await _database.QueryAsync<InstituteDescription>("[Education].[uspGetInstituteDescriptions]", p);
+        return await _database.QueryAsync<InstituteDescription>(SQLConstants.EducationGetInstituteDescriptions, p);
     }
 }

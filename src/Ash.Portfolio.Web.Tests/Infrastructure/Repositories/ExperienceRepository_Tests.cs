@@ -1,4 +1,6 @@
-﻿using Ash.Portfolio.Web.Infrastructure.Data.Education;
+﻿using Ash.Portfolio.Web.Framework.Database.Constants;
+using Ash.Portfolio.Web.Infrastructure.Data.Education;
+using Ash.Portfolio.Web.Infrastructure.Data.Experience;
 using Ash.Portfolio.Web.Infrastructure.Repositories;
 using Ash.Portfolio.Web.Tests.Base;
 using Dapper;
@@ -15,33 +17,42 @@ public class ExperienceRepository_Tests : BaseTest
     }
 
     [Fact]
-    public async Task GetInstitutesAsync_ReturnsInstitutes()
+    public async Task GetRolesWithDescriptionsAsync_ReturnsRolesWithDescriptions()
     {
         // Arrange
         MainDatabase
-            .QueryAsync<Institute>("[Education].[uspGetInstitutes]", Arg.Any<DynamicParameters>())
+            .QueryAsync<Role>(SQLConstants.ExperienceGetRoles, Arg.Any<DynamicParameters>())
             .Returns(
                 [
-                    new() { Id = 1, Name = "Institute1", DescriptionRows = [new() { ParentId = 1, Text = "Text1" }], ImageLink = "ImageLink1", Link = "Link1", Title = "Title1" },
-                    new() { Id = 2, Name = "Institute2", DescriptionRows = [new() { ParentId = 2, Text = "Text2" }], ImageLink = "ImageLink2", Link = "Link2", Title = "Title2" }
+                    new() { Id = 1, EmployerName = "EmployerName1", DescriptionRows = [new() { ParentId = 1, Text = "Text1" }], EmployerLink = "EmployerLink1", ImageLink = "ImageLink1", Title = "Title1" },
+                    new() { Id = 2, EmployerName = "EmployerName2", DescriptionRows = [new() { ParentId = 2, Text = "Text2" }], EmployerLink = "EmployerLink2", ImageLink = "ImageLink2", Title = "Title2" }
+                ]);
+
+        MainDatabase
+            .QueryAsync<RoleDescription>(SQLConstants.ExperienceGetRoleDescriptions, Arg.Any<DynamicParameters>())
+            .Returns(
+                [
+                    new() { ParentId = 1, Text = "Text1" },
+                    new() { ParentId = 2, Text = "Text2" }
                 ]);
 
         // Act
-        var institutes = await _sut.GetInstitutesAsync();
+        var roles = await _sut.GetRolesWithDescriptionsAsync();
 
         // Assert
         Received.InOrder(() =>
         {
-            MainDatabase.Received(1).QueryAsync<Institute>("[Education].[uspGetInstitutes]", Arg.Any<DynamicParameters>());
+            MainDatabase.Received(1).QueryAsync<Role>(SQLConstants.ExperienceGetRoles, Arg.Any<DynamicParameters>());
+            MainDatabase.Received(1).QueryAsync<RoleDescription>(SQLConstants.ExperienceGetRoleDescriptions, Arg.Any<DynamicParameters>());
         });
 
-        var instituteList = institutes.ToList();
-        var institute1 = instituteList[0];
-        var institute2 = instituteList[1];
+        var roleList = roles.ToList();
+        var role1 = roleList[0];
+        var role2 = roleList[1];
 
-        Assert.Equal(2, institutes.Count());
-        Assert.Equal("Institute1", institute1.Name);
-        Assert.Equal("Institute2", institute2.Name);
+        Assert.Equal(2, roles.Count());
+        Assert.Equal("EmployerName1", role1.EmployerName);
+        Assert.Equal("EmployerName2", role2.EmployerName);
     }
 
     [Fact]
@@ -49,18 +60,18 @@ public class ExperienceRepository_Tests : BaseTest
     {
         // Arrange
         MainDatabase
-            .QueryAsync<Institute>("[Education].[uspGetInstitutes]", Arg.Any<DynamicParameters>())
+            .QueryAsync<Role>(SQLConstants.ExperienceGetRoles, Arg.Any<DynamicParameters>())
             .Returns([]);
 
         // Act
-        var institutes = await _sut.GetInstitutesAsync();
+        var roles = await _sut.GetRolesWithDescriptionsAsync();
 
         // Assert
         Received.InOrder(() =>
         {
-            MainDatabase.Received(1).QueryAsync<Institute>("[Education].[uspGetInstitutes]", Arg.Any<DynamicParameters>());
+            MainDatabase.Received(1).QueryAsync<Role>(SQLConstants.ExperienceGetRoles, Arg.Any<DynamicParameters>());
         });
 
-        Assert.Empty(institutes);
+        Assert.Empty(roles);
     }
 }

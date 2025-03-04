@@ -19,19 +19,23 @@ public class ExperienceRepository : IExperienceRepository
     {
         var p = new DynamicParameters();
 
-        return await _database.QueryAsync<Role>("[Experience].[uspGetRoles]", p);
+        return await _database.QueryAsync<Role>($"{SQLConstants.ExperienceGetRoles}", p);
     }
 
     private async Task<IEnumerable<RoleDescription>> GetRoleDescriptionsAsync()
     {
         var p = new DynamicParameters();
 
-        return await _database.QueryAsync<RoleDescription>("[Experience].[uspGetRoleDescriptions]", p);
+        return await _database.QueryAsync<RoleDescription>($"{SQLConstants.ExperienceGetRoleDescriptions}", p);
     }
 
     public async Task<IEnumerable<Role>> GetRolesWithDescriptionsAsync()
     {
         var roles = await GetRolesAsync();
+
+        if (roles.Any() is false)
+            return [];
+
         var roleDescriptions = await GetRoleDescriptionsAsync();
 
         roles
