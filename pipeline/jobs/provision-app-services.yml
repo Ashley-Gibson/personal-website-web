@@ -19,8 +19,12 @@ parameters:
     type: string
   - name: dockerImageTag
     type: string
-  - name: webAppServicePlan
-    type: object
+  - name: staticWebAppName
+    type: string
+  - name: staticWebAppSku
+    type: string
+  - name: staticWebAppTier
+    type: string
   - name: sqlConnectionType
     type: string
 
@@ -39,15 +43,12 @@ jobs:
       - template: pipeline/resources/key-vault.yml@AshTemplates
       - template: pipeline/resources/sql-server.yml@AshTemplates
       - template: ../variables/featuremanagment/${{ parameters.environmentName }}/feature-settings.yml
-      - name: webAppServiceName
-        value: app-$(resourceNamePostfix)-portfolio-web
+      - name: staticWebAppName
+        value: swa-$(environmentName)-$(azureRegion)-ash-portfolio-website-web
       - name: dockerImage
         value: $(acrServerName)/${{ parameters.dockerImageRepository }}:${{ parameters.dockerImageTag }}
       - name: appSettings
-        value: -Database__ServerName "$(failoverSqlServerFullDomainName)"
-               -Database__DatabaseName "$(satabaseName)"
-               -Database__AuthenticationMode "$(sqlConnectionType)"
-               -WEBSITE_TIME_ZONE "${{ parameters.region.websiteTimeZone }}"
+        value: -WEBSITE_TIME_ZONE "${{ parameters.region.websiteTimeZone }}"
                -BUILD_VERSION "$(Build.BuildNumber)"
     strategy:
       runOnce:
@@ -72,20 +73,15 @@ jobs:
                     az deployment group create `
                     --resource-group $(resourceGroupName) `
                     --template-file $(Agent.BuildDirectory)/drop/templates/main.bicep `
-                    --parameters resource_name_post_fix=$(resourceNamePostfix) `
-                                 web_app_service_name=$(appServiceName) `
-                                 web_app_service_plan_sku=${{ parameters.servicePlan.sku }} `
-                                 web_app_service_plan_tier=${{ parameters.servicePlan.tier }} `
-                                 acr_resource_group_name=$(acrResourceGroup) `
-                                 acr_name=$(acrName) `
-                                 key_vault_name=$(keyvaultName) `
+                    --parameters static_web_app_name=$(staticWebAppName) `
+                                 static_web_app_sku=${{ parameters.staticWebAppSku }} `
+                                 static_web_app_tier=${{ parameters.staticWebAppTier }} `
+                                 azureRegionShort=${{ parameters.azureRegion }} `
+                                 sqlConnectionType=${{ parameters.sqlConnectionType }}
             
             - ${{ if in(parameters.deploymentType, 'All', 'Code') }}:
-              - task: AzureWebAppContainer@1
-                displayName: 'Deploy Web App'
+              - task: AzureStaticWebApp@0
                 inputs:
-                  azureSubscription: '${{ parameters.subscriptionName }}'
-                  appName: '$(webAppServiceName)'
-                  imageName: '$(dockerImage)'
-                  appSettings: '$(appSettings)'
-                  configurationStrings: '-acrUseManagedIdentityCreds true'
+                  app_location: 'app/dist'
+                  output_location: 'dist'
+                  skip_app_build: true

@@ -15,8 +15,12 @@ parameters:
     type: string
   - name: dockerImageTag
     type: string
-  - name: webAppServicePlan
-    type: object
+  - name: staticWebAppName
+    type: string
+  - name: staticWebAppSku
+    type: string
+  - name: staticWebAppTier
+    type: string
   - name: sqlConnectionType
     type: string
 
@@ -38,5 +42,7 @@ stages:
             runAfter: []
             dockerImageRepository: ${{ parameters.dockerImageRepository }}
             dockerImageTag: ${{ parameters.dockerImageTag }}
-            webAppServicePlan: ${{ parameters.webAppServicePlan }}
+            staticWebAppName: ${{ parameters.staticWebAppName }}
+            staticWebAppSku: ${{ parameters.staticWebAppSku }}
+            staticWebAppTier: ${{ parameters.staticWebAppTier }}
             sqlConnectionType: ${{ parameters.sqlConnectionType }}

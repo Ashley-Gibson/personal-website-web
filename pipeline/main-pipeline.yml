@@ -75,9 +75,8 @@ stages:
         subscriptionName: ${{ variables.subscriptionName }}
         dockerImageRepository: $(dockerImageRepository)
         dockerImageTag: $(dockerImageTag)
-        webAppServicePlan:
-          sku: F1
-          tier: Free
+        staticWebAppSku: F1
+        staticWebAppTier: Free
         sqlConnectionType: $(sqlConnectionType)
         regions:
         - regionName: UK

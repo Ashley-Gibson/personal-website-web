@@ -15,8 +15,12 @@ parameters:
     type: string
   - name: dockerImageTag
     type: string
-  - name: webAppServicePlan
-    type: object
+  - name: staticWebAppName
+    type: string
+  - name: staticWebAppSku
+    type: string
+  - name: staticWebAppTier
+    type: string
   - name: sqlConnectionType
     type: string
 
@@ -32,5 +36,7 @@ stages:
           region: ${{ region }}
           dockerImageRepository: ${{ parameters.dockerImageRepository }}
           dockerImageTag: ${{ parameters.dockerImageTag }}
-          webAppServicePlan: ${{ parameters.webAppServicePlan }}
-          sqlConnectionType: $${{ parameters.sqlConnectionType }}
+          staticWebAppName: ${{ parameters.staticWebAppName }}
+          staticWebAppSku: ${{ parameters.staticWebAppSku }}
+          staticWebAppTier: ${{ parameters.staticWebAppTier }}
+          sqlConnectionType: ${{ parameters.sqlConnectionType }}
