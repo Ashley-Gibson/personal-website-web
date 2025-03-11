@@ -6,5 +6,5 @@ public interface ILocalisationService
 {
     LocalizedString GetString(string key);
 
-    LocalizedString GetLocalizedHtmlString(string key);
+    LocalizedString GetLocalisedHtmlString(string key);
 }

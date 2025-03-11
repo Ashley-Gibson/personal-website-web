@@ -1,4 +1,4 @@
-﻿namespace Ash.Portfolio.Web.Domain;
+﻿namespace Ash.Portfolio.Web.Domain.Portfolio;
 
 public enum ProjectType
 {

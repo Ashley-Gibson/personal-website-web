@@ -15,10 +15,10 @@ public class LocalisationService : ILocalisationService
 
     public LocalizedString GetString(string key)
     {
-        return GetLocalizedHtmlString(key);
+        return GetLocalisedHtmlString(key);
     }
 
-    public LocalizedString GetLocalizedHtmlString(string key)
+    public LocalizedString GetLocalisedHtmlString(string key)
     {
         var localizedString = _localizer[key];
 

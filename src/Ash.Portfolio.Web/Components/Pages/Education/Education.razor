@@ -1,7 +1,8 @@
 ﻿@page "/education"
 @using Ash.Portfolio.Web.Components.Models;
+@using Ash.Portfolio.Web.Infrastructure.Services
 
-@inject IEducationRepository EducationRepository
+@inject IEducationService EducationService
 
 @code {
     private List<Infrastructure.Data.Education.Institute> InstituteData { get; set; } = [];
@@ -10,7 +11,7 @@
 
     protected override async Task OnInitializedAsync()
     {
-        var instituteData = await EducationRepository.GetInstitutesWithDescriptionAsync();
+        var instituteData = await EducationService.GetInstitutesWithDescriptionAsync();
 
         InstituteData = instituteData.ToList();
 
