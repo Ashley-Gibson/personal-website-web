@@ -3,6 +3,7 @@ param location string = resourceGroup().location
 param tags object
 param web_app_service_plan_id string
 
+// Convert to Static Web App
 resource appService 'Microsoft.Web/sites@2021-03-01' = {
   name: name
   location: location
