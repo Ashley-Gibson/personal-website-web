@@ -82,5 +82,5 @@ stages:
 #######################################################################
 # Tag the Build
 #######################################################################
-  - ${{ if in(variables['Build.Reason'], 'IndividualCI', 'BatchedCI', 'Manual') }}:
-    - template: pipeline/stages/tag-build.yml@AshTemplates
+  #- ${{ if in(variables['Build.Reason'], 'IndividualCI', 'BatchedCI', 'Manual') }}:
+  #  - template: pipeline/stages/tag-build.yml@AshTemplates
