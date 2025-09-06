@@ -7,8 +7,6 @@ parameters:
     type: string  
   - name: subscriptionName
     type: string
-  - name: subscriptionType
-    type: string
   - name: region
     type: object
   - name: azureRegion
@@ -21,8 +19,6 @@ parameters:
     type: string
   - name: webAppServicePlan
     type: object
-  - name: sqlConnectionType
-    type: string
 
 jobs:
   - deployment: Deploy_AppService_${{ parameters.azureRegion }}
@@ -30,23 +26,15 @@ jobs:
     dependsOn: ${{ parameters.runAfter }}
     environment: Athena ${{ parameters.region.regionName }} ${{ parameters.stage }} (${{ parameters.environmentName }})
     variables:
-      - template: pipeline/variables/subscriptions/${{ lower(parameters.subscriptionName) }}.yml@AshTemplates
-      - template: pipeline/variables/regions/${{ parameters.region.regionName }}.yml@AshTemplates
-      - template: pipeline/variables/azureregions/${{ parameters.azureRegion }}.yml@AshTemplates
-      - template: pipeline/variables/environments/${{ parameters.environmentName }}.yml@AshTemplates
-      - template: pipeline/variables/common/portfolio.yml@AshTemplates
-      - template: pipeline/resources/azure-container-registry.yml@AshTemplates
-      - template: pipeline/resources/key-vault.yml@AshTemplates
-      - template: pipeline/resources/sql-server.yml@AshTemplates
-      - template: ../variables/featuremanagment/${{ parameters.environmentName }}/feature-settings.yml
+      - group: 'Ash Personal Website Prod'
+      - name: systemTag
+        value: 'ash-portfolio'
       - name: webAppServiceName
-        value: app-$(resourceNamePostfix)-portfolio-web
+        value: app-${{ parameters.environmentName }}-ash-portfolio-web
       - name: dockerImage
         value: $(acrServerName)/${{ parameters.dockerImageRepository }}:${{ parameters.dockerImageTag }}
       - name: appSettings
-        value: -Database__ServerName "$(failoverSqlServerFullDomainName)"
-               -Database__DatabaseName "$(satabaseName)"
-               -Database__AuthenticationMode "$(sqlConnectionType)"
+        value: -Database__ConnectionString "$(Database.ConnectionString)"
                -WEBSITE_TIME_ZONE "${{ parameters.region.websiteTimeZone }}"
                -BUILD_VERSION "$(Build.BuildNumber)"
     strategy:
@@ -59,7 +47,7 @@ jobs:
                 inputs:
                   spn: '${{ variables.azureSubscription }}'
                   resourceGroup: '$(resourceGroupName)'
-                  location: '$(azureRegionName)'
+                  location: 'eun'
                   SystemTag: '$(systemTag)'
 
               - task: AzureCLI@2

@@ -17,8 +17,6 @@ parameters:
     type: string
   - name: webAppServicePlan
     type: object
-  - name: sqlConnectionType
-    type: string
 
 stages:
     - ${{ each region in parameters.regions }}:      
@@ -33,4 +31,3 @@ stages:
           dockerImageRepository: ${{ parameters.dockerImageRepository }}
           dockerImageTag: ${{ parameters.dockerImageTag }}
           webAppServicePlan: ${{ parameters.webAppServicePlan }}
-          sqlConnectionType: $${{ parameters.sqlConnectionType }}

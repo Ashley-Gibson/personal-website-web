@@ -1,0 +1,62 @@
+stages:
+  - stage: DeploymentPreparation
+    displayName: Deployment Preparation Stage
+    variables:
+      - name: solution
+        value: '**/*.sln'
+      - name: buildPlatform
+        value: 'Any CPU'
+      - name: buildConfiguration
+        value: 'Release'
+        
+    jobs:
+      - job: RestoreNuGet
+        displayName: Restore NuGet
+        steps:
+          - checkout: self
+            clean: false
+            displayName: Checkout
+            fetchDepth: '0'
+          - task: NuGetCommand@2
+            inputs:
+              restoreSolution: '$(solution)'
+      - job: BuildSolutionCopyFiles
+        displayName: Build Solution and Copy Files
+        dependsOn: RestoreNuGet
+        steps:
+          - task: VSBuild@1
+            inputs:
+              solution: '$(solution)'
+              platform: '$(buildPlatform)'
+              configuration: '$(buildConfiguration)'
+          - ${{ if in(variables['Build.Reason'], 'IndividualCI', 'BatchedCI', 'Manual') }}:
+            - task: CopyFiles@2
+              displayName: "Copy Web build output to artifacts staging directory"
+              inputs:
+                SourceFolder: 'src/Ash.Portfolio.Web/bin/Release'
+                Contents: '**'
+                TargetFolder: '$(Build.ArtifactStagingDirectory)'
+            - task: CopyFiles@2
+              displayName: "Copy Web Test build output to artifacts staging directory"
+              inputs:
+                SourceFolder: 'src/Ash.Portfolio.Web.Test/bin/Release'
+                Contents: '**'
+                TargetFolder: '$(Build.ArtifactStagingDirectory)'
+            - task: CopyFiles@2
+              displayName: "Copy Bicep templates"
+              inputs:
+                SourceFolder: 'infra'
+                Contents: '**'
+                TargetFolder: '$(Build.ArtifactStagingDirectory)'
+            - task: CopyFiles@2
+              displayName: "Copy Scripts"
+              inputs:
+                SourceFolder: '.azdo/scripts'
+                Contents: '**'
+                TargetFolder: '$(Build.ArtifactStagingDirectory)'
+            - task: PublishBuildArtifacts@1
+              displayName: "Publish artifacts to the drop folder"
+              inputs:
+                PathtoPublish: '$(Build.ArtifactStagingDirectory)'
+                ArtifactName: 'drop'
+                publishLocation: 'Container'

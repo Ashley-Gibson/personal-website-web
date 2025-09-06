@@ -1,10 +1,3 @@
-resources: 
-  repositories: 
-  - repository: AshTemplates 
-    name: Ashley-Gibson/personal-website-templates 
-    type: github
-    ref: main
-
 trigger:
   branches:
     include:
@@ -40,7 +33,6 @@ variables:
   subscriptionName: AshleyGibsonSubscription
   dockerImageRepository: ash-portfolio-website-web
   dockerImageTag: '$(Build.BuildId)-ash-portfolio-website-web'
-  sqlConnectionType: 'ManagedIdentity'
 
 stages:
   
@@ -57,7 +49,7 @@ stages:
         dockerImageTag: $(dockerImageTag)
   
   - ${{ if in(variables['Build.Reason'], 'IndividualCI', 'BatchedCI', 'Manual') }}:
-    - template: pipeline/stages/deployment-preparation.yml@AshTemplates
+    - template: stages/deployment-preparation.yml
       parameters:
          runAfter: 
           - Build_And_Test
@@ -78,7 +70,6 @@ stages:
         webAppServicePlan:
           sku: F1
           tier: Free
-        sqlConnectionType: $(sqlConnectionType)
         regions:
         - regionName: UK
           runAfter:
